@@ -1,12 +1,14 @@
 <header class="header">
-  <div class="company">
-    <div class="name">
-      <h1>Art Haus</h1>
+  <%= link_to(root_path) do %>
+    <div class="company">
+      <div class="name">
+        <h1>Art Haus</h1>
+      </div>
+      <div class="logo">
+        <h1>|SOME_LOGO|</h1>
+      </div>
     </div>
-    <div class="logo">
-      <h1>|SOME_LOGO|</h1>
-    </div>
-  </div>
+  <% end %>
   <div class="links">
     <% if user_signed_in? %>
       <%= link_to "Settings", user_settings_path %>
