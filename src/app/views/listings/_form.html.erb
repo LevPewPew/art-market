@@ -31,14 +31,12 @@
     <%= form.text_area :description %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.fields_for :listings_styles do |listings_styles_form| %>
       <%= listings_styles_form.label :style_id %>
-      <%= listings_styles_form.number_field :style_id %>
+      <%= listings_styles_form.select :style_id, options_for_select( Style.all.collect { |u| [u.name, u.id] } ) %>
     <% end %>
   </div>
-
-  
 
   <div class="actions">
     <%= form.submit %>
