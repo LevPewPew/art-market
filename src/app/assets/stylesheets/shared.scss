@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .company {
+    display: flex;
+  }
+
+  .links {
+    display: flex;
+    justify-content: end;
+
+    a {
+      margin: 5px;
+    }
+  }
+}
