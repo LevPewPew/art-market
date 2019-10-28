@@ -9,7 +9,13 @@ class UserDetailsController < ApplicationController
   def update
     respond_to do |format|
       if @user_detail.update(user_detail_params)
-        format.html { redirect_to session[:settings_prev_page], notice: 'user_detail was successfully updated.' }
+        format.html { 
+          begin
+            redirect_to session[:settings_prev_page], notice: 'user_detail was successfully updated.'
+          rescue
+            redirect_to root_url
+          end
+          }
         format.json { render :show, status: :ok, location: @user_detail }
       else
         format.html { render :edit }
