@@ -34,6 +34,6 @@ class UserDetailsController < ApplicationController
     end
 
     def user_detail_params
-      params.require(:user_detail).permit(:name, :bio, :user_id, addresses_attributes: [:id, :line_1, :line_2, :city, :state, :postcode, :user_detail_id])
+      params.require(:user_detail).permit(:name, :bio, :user_id, address_attributes: [:id, :line_1, :line_2, :city, :state, :postcode, :user_detail_id])
     end
 end

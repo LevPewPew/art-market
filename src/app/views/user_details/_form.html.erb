@@ -22,7 +22,7 @@
   </div>
 
   <div class="related-form">
-    <%= form.fields_for :addresses, @address do |addresses_form| %>
+    <%= form.fields_for :address, @address do |addresses_form| %>
       <div class="field">
         <%= addresses_form.label :line_1 %>
         <%= addresses_form.text_field :line_1 %>
