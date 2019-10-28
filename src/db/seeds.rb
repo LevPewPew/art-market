@@ -7,6 +7,8 @@
 # end
 
 styles = [
+  'None',
+  'Miscellaneous',
   'ASCII art',
   'Abstract art',
   'Art Brut',

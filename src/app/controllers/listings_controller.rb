@@ -17,7 +17,9 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    @listing.listings_styles.build
+    # just going to have 3 fields already there with option for None
+    # this is because I haven't learned JavaScript yet to dynamically create more or less of these fields in the form with a click of a button
+    3.times { @listing.listings_styles.build }
   end
 
   def edit
@@ -76,6 +78,6 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:title, :artist, :price, :description, :user_id, listings_styles_attributes: [:listing_id, :style_id])
+      params.require(:listing).permit(:title, :artist, :price, :description, :user_id, listings_styles_attributes: [:id, :listing_id, :style_id])
     end
 end
