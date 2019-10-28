@@ -1,0 +1,56 @@
+<%= form_with(model: user_detail, url: user_settings_path, local: true) do |form| %>
+  <% if user_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_detail.errors.count, "error") %> prohibited this @user_detail from being saved:</h2>
+
+      <ul>
+      <% user_detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.text_area :bio %>
+  </div>
+
+  <div class="related-form">
+    <%= form.fields_for :addresses do |addresses_form| %>
+      <div class="field">
+        <%= addresses_form.label :line_1 %>
+        <%= addresses_form.select :line_1 %>
+      </div>
+
+      <div class="field">
+        <%= addresses_form.label :line_2 %>
+        <%= addresses_form.select :line_2 %>
+      </div>
+
+      <div class="field">
+        <%= addresses_form.label :city %>
+        <%= addresses_form.select :city %>
+      </div>
+
+      <div class="field">
+        <%= addresses_form.label :state %>
+        <%= addresses_form.select :state %>
+      </div>
+
+      <div class="field">
+        <%= addresses_form.label :postcode %>
+        <%= addresses_form.select :postcode %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

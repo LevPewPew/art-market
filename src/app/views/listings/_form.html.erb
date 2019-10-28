@@ -31,10 +31,12 @@
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
+  <div class="related-form">
     <%= form.fields_for :listings_styles do |listings_styles_form| %>
-      <%= listings_styles_form.label :style_id %>
-      <%= listings_styles_form.select :style_id, options_for_select( Style.all.collect { |u| [u.name, u.id] } ) %>
+      <div class="field">
+        <%= listings_styles_form.label :style_id %>
+        <%= listings_styles_form.select :style_id, options_for_select( Style.all.collect { |u| [u.name, u.id] }, selected: @listing.listings_styles.first.style_id ) %>
+      </div>
     <% end %>
   </div>
 

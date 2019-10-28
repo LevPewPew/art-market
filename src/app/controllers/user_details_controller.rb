@@ -1,81 +1,31 @@
-class ListingsController < ApplicationController
-  before_action :authenticate_user!, only: [:my_listings]
-  before_action :set_listing, only: [:show]
-  before_action :set_user_listing, only: [:edit, :update, :destroy]
-  after_action :join_styles_to_listing, only: [:create]
-
-  def index
-    @listings = Listing.all
-  end
-
-  def my_listings
-    @listings = current_user.listings
-  end
-
-  def show
-  end
-
-  def new
-    @listing = Listing.new
-    @listing.listings_styles.build
-  end
+class UserDetailsController < ApplicationController
+  before_action :set_user_detail, only: [:edit, :update]
 
   def edit
-  end
-
-  def create
-    @listing = current_user.listings.new(listing_params)
-
-    respond_to do |format|
-      if @listing.save
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
-        format.json { render :show, status: :created, location: @listing }
-      else
-        format.html { render :new }
-        format.json { render json: @listing.errors, status: :unprocessable_entity }
-      end
-    end
+    session[:settings_prev_page] = request.referer
   end
 
   def update
     respond_to do |format|
-      if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
-        format.json { render :show, status: :ok, location: @listing }
+      if @user_detail.update(user_detail_params)
+        format.html { redirect_to session[:settings_prev_page], notice: 'user_detail was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user_detail }
       else
         format.html { render :edit }
-        format.json { render json: @listing.errors, status: :unprocessable_entity }
+        format.json { render json: @user_detail.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def destroy
-    @listing.destroy
-    respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
   private
-    def set_listing
-      @listing = Listing.find(params[:id])
-    end
-
-    def set_user_listing
-      @listing = current_user.listings.find_by_id(params[:id])
-      if @listing.nil?
-        redirect_to listings_path
+    def set_user_detail
+      @user_detail = current_user.user_detail
+      if @user_detail.nil?
+        redirect_to root_path
       end
     end
 
-    def join_styles_to_listing
-      listing = Listing.last
-      listings_style = ListingsStyle.last
-      listings_style.update(listing_id: listing.id)
-    end
-
-    def listing_params
-      params.require(:listing).permit(:title, :artist, :price, :description, :user_id, listings_styles_attributes: [:listing_id, :style_id])
+    def user_detail_params
+      params.require(:user_detail).permit(:name, :bio, :user_id)
     end
 end
