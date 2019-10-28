@@ -78,6 +78,6 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:title, :artist, :price, :description, :user_id, listings_styles_attributes: [:id, :listing_id, :style_id])
+      params.require(:listing).permit(:title, :artist, :price, :description, :picture, :user_id, listings_styles_attributes: [:id, :listing_id, :style_id])
     end
 end

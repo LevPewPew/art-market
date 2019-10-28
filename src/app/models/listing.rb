@@ -5,4 +5,5 @@ class Listing < ApplicationRecord
   has_many :styles, through: :listings_styles
   accepts_nested_attributes_for :listings_styles
   has_many :comments
+  has_one_attached :picture
 end
