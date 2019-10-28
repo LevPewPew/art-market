@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get 'user_settings', to: 'user_details#edit', as: 'user_settings'
   put 'user_settings', to: 'user_details#update'
+  put 'user_settings', to: 'user_details#update'
   patch 'user_settings', to: 'user_details#update'
 
 

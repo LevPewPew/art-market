@@ -22,30 +22,30 @@
   </div>
 
   <div class="related-form">
-    <%= form.fields_for :addresses do |addresses_form| %>
+    <%= form.fields_for :addresses, @address do |addresses_form| %>
       <div class="field">
         <%= addresses_form.label :line_1 %>
-        <%= addresses_form.select :line_1 %>
+        <%= addresses_form.text_field :line_1 %>
       </div>
 
       <div class="field">
         <%= addresses_form.label :line_2 %>
-        <%= addresses_form.select :line_2 %>
+        <%= addresses_form.text_field :line_2 %>
       </div>
 
       <div class="field">
         <%= addresses_form.label :city %>
-        <%= addresses_form.select :city %>
+        <%= addresses_form.text_field :city %>
       </div>
 
       <div class="field">
         <%= addresses_form.label :state %>
-        <%= addresses_form.select :state %>
+        <%= addresses_form.number_field :state %>
       </div>
 
       <div class="field">
         <%= addresses_form.label :postcode %>
-        <%= addresses_form.select :postcode %>
+        <%= addresses_form.number_field :postcode %>
       </div>
     <% end %>
   </div>

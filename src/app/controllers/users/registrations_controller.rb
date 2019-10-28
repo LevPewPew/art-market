@@ -63,7 +63,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create_default_settings
     user = User.last
-    user_details = UserDetail.new(user_id: user.id)
-    user_details.save
+    user_detail = UserDetail.new(user_id: user.id)
+    user_detail.save
+    address = Address.new(user_detail_id: user_detail.id)
+    address.save
   end
 end

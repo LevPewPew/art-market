@@ -1,5 +1,6 @@
 class UserDetailsController < ApplicationController
   before_action :set_user_detail, only: [:edit, :update]
+  before_action :set_user_detail_address, only: [:edit, :update]
 
   def edit
     session[:settings_prev_page] = request.referer
@@ -25,7 +26,14 @@ class UserDetailsController < ApplicationController
       end
     end
 
+    def set_user_detail_address
+      @address = current_user.user_detail.address
+      if @address.nil?
+        redirect_to root_path
+      end
+    end
+
     def user_detail_params
-      params.require(:user_detail).permit(:name, :bio, :user_id)
+      params.require(:user_detail).permit(:name, :bio, :user_id, addresses_attributes: [:id, :line_1, :line_2, :city, :state, :postcode, :user_detail_id])
     end
 end

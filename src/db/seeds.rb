@@ -1,10 +1,10 @@
-# TOTAL_USERS = User.count
+TOTAL_USERS = User.count
 
-# TOTAL_USERS.times do |n|
-#   rand(1..3).times do
-#     Listing.create(title: "#{Faker::Dessert.flavor} #{Faker::Dessert.variety}", artist: "#{Faker::Name.first_name} #{Faker::Name.last_name}", price: rand(1..100000), description: Faker::TvShows::TwinPeaks.quote, user_id: User.all[n].id)
-#   end
-# end
+TOTAL_USERS.times do |n|
+  rand(1..3).times do
+    Listing.create(title: "#{Faker::Dessert.flavor} #{Faker::Dessert.variety}", artist: "#{Faker::Name.first_name} #{Faker::Name.last_name}", price: rand(1..100000), description: Faker::TvShows::TwinPeaks.quote, user_id: User.all[n].id)
+  end
+end
 
 styles = [
   'None',
