@@ -17,6 +17,8 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       customer_email: current_user.email,
