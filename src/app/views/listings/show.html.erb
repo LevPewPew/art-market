@@ -48,12 +48,16 @@
   <% @listing.comments.each do |comment| %>
     <div>
       <%= comment.body %>
+      <%#TODO fix this params issue%>
+      <%= link_to 'Edit', edit_listing_comment_path(listing_id: @listing.id, id: comment.id) %>
+      <%# TODO fix this destroy not just re rendering the listing page %>
+      <%= link_to 'Destroy', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
 </p>
 
 <strong>POST A COMMENT</strong>
-<%= render 'comments/form', listing: @listing, comment: @comment %>
+<%= render 'comments/form' %>
 
 <hr>
 

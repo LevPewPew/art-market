@@ -1,10 +1,10 @@
-<%= form_with(model: [@listing, comment], url: comments_path, local: true) do |form| %>
-  <% if comment.errors.any? %>
+<%= form_with(model: [@listing, @listing.comments.build], local: true) do |form| %>
+  <% if @listing.comments.build.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <h2><%= pluralize(@listing.comments.build.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
       <ul>
-      <% comment.errors.full_messages.each do |message| %>
+      <% @listing.comments.build.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

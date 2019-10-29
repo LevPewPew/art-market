@@ -16,13 +16,20 @@ Rails.application.routes.draw do
   get 'my_listings', to: 'listings#my_listings', as: 'my_listings'
   get 'my_purchases', to: 'listings#my_purchases', as: 'my_purchases'
 
-  resources :comments
+  get '/comments', to: 'comments#index', as: 'listing_comments'
+  post '/comments', to: 'comments#create'
+  get '/comments/new', to: 'comments#new', as: 'new_comment'
+  get '/listings/:listing_id/comments/:id', to: 'comments#show', as: 'listing_comment'
+  put '/listings/:listing_id/comments/:id', to: 'comments#update'
+  patch '/listings/:listing_id/comments/:id', to: 'comments#update'
+  delete '/listings/:listing_id/comments/:id', to: 'comments#destroy'
+  get '/listings/:listing_id/comments/:id/edit', to: 'comments#edit', as: 'edit_listing_comment'
 
   get 'user_settings', to: 'user_details#edit', as: 'user_settings'
   put 'user_settings', to: 'user_details#update'
   put 'user_settings', to: 'user_details#update'
   patch 'user_settings', to: 'user_details#update'
 
-  get "/payments/success", to: "payments#success"
-  post "/payments/webhook", to: "payments#webhook"
+  get '/payments/success', to: 'payments#success'
+  post '/payments/webhook', to: 'payments#webhook'
 end
