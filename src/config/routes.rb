@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'my_listings', to: 'listings#my_listings', as: 'my_listings'
   get 'my_purchases', to: 'listings#my_purchases', as: 'my_purchases'
 
+  resources :comments
+
   get 'user_settings', to: 'user_details#edit', as: 'user_settings'
   put 'user_settings', to: 'user_details#update'
   put 'user_settings', to: 'user_details#update'
