@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   put 'user_settings', to: 'user_details#update'
   patch 'user_settings', to: 'user_details#update'
 
-
+  get "/payments/success", to: "payments#success"
+  post "/payments/webhook", to: "payments#webhook"
 end
