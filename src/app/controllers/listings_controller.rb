@@ -12,6 +12,10 @@ class ListingsController < ApplicationController
     @listings = current_user.listings
   end
 
+  def my_purchases
+    @listings = Listing.joins(:purchase).merge(Purchase.where(user_id: current_user.id))
+  end
+
   def show
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],

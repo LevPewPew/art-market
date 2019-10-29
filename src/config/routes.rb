@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   delete '/listings/:id', to: 'listings#destroy'
   get '/listings/:id/edit', to: 'listings#edit', as: 'edit_listing'
   get 'my_listings', to: 'listings#my_listings', as: 'my_listings'
+  get 'my_purchases', to: 'listings#my_purchases', as: 'my_purchases'
 
   get 'user_settings', to: 'user_details#edit', as: 'user_settings'
   put 'user_settings', to: 'user_details#update'
