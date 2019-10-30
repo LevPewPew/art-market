@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/listings/:id/edit', to: 'listings#edit', as: 'edit_listing'
   get 'my_listings', to: 'listings#my_listings', as: 'my_listings'
   get 'my_purchases', to: 'listings#my_purchases', as: 'my_purchases'
+  get 'my_sales', to: 'listings#my_sales', as: 'my_sales'
 
   get '/comments', to: 'comments#index', as: 'listing_comments'
   post '/comments', to: 'comments#create'

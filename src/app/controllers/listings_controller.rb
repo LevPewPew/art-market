@@ -1,19 +1,27 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!, only: [:my_listings]
+  before_action :authenticate_user!, only: [:my_listings, :my_purchases, :my_sales]
   before_action :set_listing, only: [:show]
   before_action :set_user_listing, only: [:edit, :update, :destroy]
   after_action :join_styles_to_listing, only: [:create]
 
+  # all non purchased listings
   def index
-    @listings = Listing.all
+    @listings = Listing.all.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)')
   end
 
+  # current users' listings that are unpurchased (i.e. there is not matching row in the purchases table)
   def my_listings
-    @listings = current_user.listings
+    @listings = current_user.listings.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)')
   end
 
+  # any listing that has been purchased by the current user
   def my_purchases
     @listings = Listing.joins(:purchase).merge(Purchase.where(user_id: current_user.id))
+  end
+
+  # any current user' listings that have been purchased
+  def my_sales
+    @listings = current_user.listings.joins(:purchase).merge(Purchase.all)
   end
 
   def show

@@ -35,22 +35,13 @@
 
 <hr>
 
-<div>
-  TESTING INFO
-  <br>
-  listing_id: <%= @listing.id %>
-  user_id: <%= current_user.id %>
-</div>
-
 <p>
   <strong>Comments:</strong>
   <br>
   <% @listing.comments.each do |comment| %>
     <div>
       <%= comment.body %>
-      <%#TODO fix this params issue%>
       <%= link_to 'Edit', edit_listing_comment_path(listing_id: @listing.id, id: comment.id) %>
-      <%# TODO fix this destroy not just re rendering the listing page %>
       <%= link_to 'Destroy', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>

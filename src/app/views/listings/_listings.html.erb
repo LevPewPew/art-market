@@ -12,18 +12,16 @@
 
   <tbody>
     <% @listings.each do |listing| %>
-      <% if listing.purchase.nil? || listing.purchase.user_id == current_user.id %>
-        <tr>
-          <td><%= listing.title %></td>
-          <td><%= listing.artist %></td>
-          <td><%= listing.price %></td>
-          <td><%= listing.description %></td>
-          <td><%= listing.user.email %></td>
-          <td><%= link_to 'Show', listing %></td>
-          <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-          <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
+      <tr>
+        <td><%= listing.title %></td>
+        <td><%= listing.artist %></td>
+        <td><%= listing.price %></td>
+        <td><%= listing.description %></td>
+        <td><%= listing.user.email %></td>
+        <td><%= link_to 'Show', listing %></td>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
