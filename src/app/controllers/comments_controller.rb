@@ -19,14 +19,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to listing_path(@comment.listing_id), notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      redirect_to listing_path(@comment.listing_id)
+    else
+      flash[:comment_errors] = @comment.errors
+      redirect_to listing_path(@comment.listing_id)
     end
   end
 
