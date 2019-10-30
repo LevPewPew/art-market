@@ -40,7 +40,7 @@
 
       <div class="field">
         <%= addresses_form.label :state %>
-        <%= addresses_form.number_field :state %>
+        <%= addresses_form.select :state, options_for_select( Address.states.keys, selected: user_detail.address.state )%>
       </div>
 
       <div class="field">
