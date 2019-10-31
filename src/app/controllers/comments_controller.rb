@@ -28,14 +28,11 @@ class CommentsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to listing_path(@comment.listing_id), notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.update(comment_params)
+      redirect_to listing_path(@comment.listing_id)
+    else
+      flash[:comment_errors] = @comment.errors
+      redirect_to listing_path(@comment.listing_id)
     end
   end
 

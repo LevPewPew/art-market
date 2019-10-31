@@ -233,7 +233,7 @@ TOTAL_USERS.times do |n|
       Comment.create(
         body: Faker::Lorem.paragraph(sentence_count: rand(1..6)),
         listing_id: listing.id,
-        user_id: user.id
+        user_id: rand(1..TOTAL_USERS)
       )
     end
   end
