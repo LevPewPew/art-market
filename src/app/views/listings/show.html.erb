@@ -40,9 +40,15 @@
   <br>
   <% @listing.comments.each do |comment| %>
     <div>
+      <div>
+        <em><%= comment.user.user_detail.name %></em>
+        <em><%= comment.created_at %></em>
+      </div>
       <%= comment.body %>
-      <%= link_to 'Edit', edit_listing_comment_path(listing_id: @listing.id, id: comment.id) %>
-      <%= link_to 'Destroy', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if !current_user.nil? && current_user.id == comment.user_id %>
+        <%= link_to 'Edit', edit_listing_comment_path(listing_id: @listing.id, id: comment.id) %>
+        <%= link_to 'Destroy', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
   <% end %>
 </p>
