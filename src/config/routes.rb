@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  get '/', to: 'pages#home', as: 'root'
+  get '/', to: 'listings#index', as: 'root'
 
   get '/listings', to: 'listings#index', as: 'listings'
   post '/listings', to: 'listings#create'

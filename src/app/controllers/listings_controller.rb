@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!, only: [:my_listings, :my_purchases, :my_sales]
+  before_action :authenticate_user!, only: [:my_listings, :my_purchases, :my_sales, :new]
   before_action :set_listing, only: [:show]
   before_action :set_user_listing, only: [:edit, :update, :destroy]
   after_action :join_styles_to_listing, only: [:create]
