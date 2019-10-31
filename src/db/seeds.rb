@@ -183,9 +183,9 @@ styles = [
   'Vorticism'
 ]
 
-# styles.each do |style|
-#   Style.create(name: style)
-# end
+styles.each do |style|
+  Style.create(name: style)
+end
 
 TOTAL_USERS = 1
 

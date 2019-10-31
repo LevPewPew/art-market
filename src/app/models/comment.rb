@@ -3,5 +3,5 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   validates :body, presence: true
-  validates_with ProfanityValidator
+  validates_with PretentiousnessValidator
 end
