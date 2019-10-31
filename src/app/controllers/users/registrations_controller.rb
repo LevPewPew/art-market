@@ -4,6 +4,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   after_action :create_default_settings, only: [:create]
+  before_action :set_user, only: [:destroy_other]
+
+  def index
+    @users = User.all
+  end
+
+  def destroy_other
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   # GET /resource/sign_up
   # def new
@@ -67,5 +80,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user_detail.save
     address = Address.new(user_detail_id: user_detail.id)
     address.save
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

@@ -4,9 +4,13 @@
       <div class="name">
         <h1>Art Haus</h1>
       </div>
-      <div class="logo">
-        <h1>|SOME_LOGO|</h1>
-      </div>
+      <% if !current_user.nil? %>
+        <% if current_user.user_detail.super_user %>
+          <div>
+            <%= link_to 'Admin Dashboard', admin_dashboard_path %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
   <div class="links">
