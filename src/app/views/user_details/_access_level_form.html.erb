@@ -1,0 +1,12 @@
+<%= form_with(model: user_detail, url: user_settings_path, local: true) do |form| %>
+  <%= index %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: "name#{index}" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'data-target': "#name#{index}" %>
+  </div>
+
+<% end %>
