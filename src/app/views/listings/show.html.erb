@@ -54,7 +54,12 @@
 </p>
 
 <strong>Discuss this Piece</strong>
-<%= render 'comments/form' %>
+<% if current_user.nil? %>
+  <br>
+  <%= link_to "Sign In to Comment!", new_user_session_path %>
+<% else %>
+  <%= render 'comments/form' %>
+<% end %>
 
 <hr>
 
