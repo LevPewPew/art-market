@@ -14,7 +14,7 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.user_detail %></td>
-        <td><%= render 'user_details/access_level_form', user_detail: user.user_detail, index: index %></td>
+        <td><%= link_to 'Manage User', edit_user_detail_path(user.user_detail) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

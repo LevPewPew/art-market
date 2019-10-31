@@ -9,12 +9,18 @@ Rails.application.routes.draw do
   
   get '/', to: 'listings#index', as: 'root'
   
-  get '/user_settings', to: 'user_details#edit', as: 'user_settings'
-  put '/user_settings', to: 'user_details#update'
-  patch '/user_settings', to: 'user_details#update'
+  # get '/user_settings', to: 'user_details#edit', as: 'user_settings'
+  # put '/user_settings', to: 'user_details#update'
+  # patch '/user_settings', to: 'user_details#update'
+  get '/user_details/:id', to: 'user_details#show', as: 'user_detail'
+  put '/user_details/:id', to: 'user_details#update'
+  patch '/user_details/:id', to: 'user_details#update'
+  get '/user_details/:id/edit', to: 'user_details#edit', as: 'edit_user_detail'
+
   get '/admin_dashboard', to: 'pages#admin_dashboard', as: 'admin_dashboard'
   get '/site_stats', to: 'pages#site_stats', as: 'site_stats'
 
+  get '/listings', to: 'listings#index', as: 'listings'
   post '/listings', to: 'listings#create'
   get '/listings/new', to: 'listings#new', as: 'new_listing'
   get '/listings/:id', to: 'listings#show', as: 'listing'
