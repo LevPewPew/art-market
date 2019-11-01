@@ -21,6 +21,18 @@
     <%= form.text_area :bio %>
   </div>
 
+  <% if current_user.user_detail.super_user %>
+    <div class="field">
+      <%= form.label :super_user %>
+      <%= form.check_box :super_user %>
+    </div>
+
+    <div class="field">
+      <%= form.label :comms_mngr %>
+      <%= form.check_box :comms_mngr %>
+    </div>
+  <% end %>
+
   <div class="related-form">
     <%= form.fields_for :address, @address do |addresses_form| %>
       <div class="field">

@@ -13,8 +13,9 @@
     <% @users.each_with_index do |user, index| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.user_detail %></td>
-        <td><%= link_to 'Manage User', edit_user_detail_path(user.user_detail) %></td>
+        <td><strong>Admin: </strong><%= user.user_detail.super_user %></td>
+        <td><strong>Communications Manager: </strong><%= user.user_detail.comms_mngr %></td>
+        <td>| <%= link_to 'Manage User', edit_user_detail_path(user.user_detail) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

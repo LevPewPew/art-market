@@ -25,20 +25,6 @@ class UserDetailsController < ApplicationController
   end
 
   private
-    # def set_user_detail
-    #   @user_detail = current_user.user_detail
-    #   if @user_detail.nil?
-    #     redirect_to root_path
-    #   end
-    # end
-
-    # def set_user_detail_address
-    #   @address = current_user.user_detail.address
-    #   if @address.nil?
-    #     redirect_to root_path
-    #   end
-    # end
-
     def set_user_detail
       @user_detail = UserDetail.find(params[:id])
     end

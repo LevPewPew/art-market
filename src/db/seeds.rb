@@ -238,9 +238,9 @@ TOTAL_USERS.times do |n|
     end
   end
 
-  # rand(0..5).times do
-  #   Purchase.
-  # end
+  rand(0..5).times do
+    Purchase.create()
+  end
 end
 
 

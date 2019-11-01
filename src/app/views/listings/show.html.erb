@@ -63,23 +63,25 @@
 
 <hr>
 
-<button data-stripe="payment">Purchase</button>
+<% if !@listing.purchase && @listing.user.id != current_user.id %>
+  <button data-stripe="payment">Purchase</button>
 
-<%# this script is needed for stripe to work, i don't know exactly how it works, got it from the docs %>
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-  document
-    .querySelector("[data-stripe='payment']")
-    .addEventListener("click", () => {
-      const stripe = Stripe(
-        "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
-      );
+  <%# this script is needed for stripe to work, i don't know exactly how it works, got it from the docs %>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    document
+      .querySelector("[data-stripe='payment']")
+      .addEventListener("click", () => {
+        const stripe = Stripe(
+          "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+        );
 
-      stripe.redirectToCheckout({
-        sessionId: "<%= @session_id %>"
+        stripe.redirectToCheckout({
+          sessionId: "<%= @session_id %>"
+        });
       });
-    });
-</script>
+  </script>
+<% end %>
 
 <br>
 <br>
