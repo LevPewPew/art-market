@@ -4,10 +4,10 @@ class ListingsController < ApplicationController
   before_action :set_user_listing, only: [:edit, :update, :destroy]
   after_action :join_styles_to_listing, only: [:create]
 
+  # all the "q" stuff and .ransack, is for the ransack gem which is a searchbar
+
   # all non purchased listings
   def index
-    # @listings = Listing.all.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)')
-    # ransack gem (searchbar) attributes
     @q = Listing.all.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)').ransack(params[:q])
     @listings = @q.result(distinct: true)
   end
