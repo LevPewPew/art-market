@@ -16,8 +16,12 @@
         <td><%= listing.title %></td>
         <td><%= listing.artist %></td>
         <td><%= listing.price %></td>
-        <td><%= listing.description %></td>
-        <td><%= listing.user.email %></td>
+        <td>
+          <div max-width="100px">
+            <%= image_tag listing.picture, height: "100px" if listing.picture.attached? %>
+          </div>
+        </td>
+        <td><%= listing.user.user_detail.name %></td>
         <td><%= link_to 'Show', listing %></td>
         <% if !current_user.nil? && current_user.id == listing.user_id %>
           <td><%= link_to 'Edit', edit_listing_path(listing) %></td>

@@ -1,8 +1,8 @@
-# production seed
+# PRODUCTION SEED
 # TODO create admin user here
 # comment out testing seed for a "real" deployment, leave it in for a demonstration deployment
 
-# testing seed
+# TESTING SEED
 
 styles = [
   'None',
@@ -187,10 +187,10 @@ styles.each do |style|
   Style.create(name: style)
 end
 
-TOTAL_USERS = 1
+TOTAL_USERS = 10
 
+id = 1
 TOTAL_USERS.times do |n|
-  id = ActiveRecord::Base.connection.execute("select last_value from users_id_seq").first["last_value"] + 1
   User.create(
     email: "test#{id}@mail.com",
     password: "asdasd#{id}"
@@ -222,6 +222,8 @@ TOTAL_USERS.times do |n|
       user_id: user.id
     )
     listing = Listing.last
+    listing.picture.attach(io: File.open("app/assets/images/listing_picture_attachments/art#{rand(0..13)}.jpg"), filename: "art_picture_attachment.jpg")
+    listing.save
     3.times do
       ListingsStyle.create(
         listing_id: listing.id,
@@ -231,18 +233,67 @@ TOTAL_USERS.times do |n|
 
     rand(0..5).times do
       Comment.create(
-        body: Faker::Lorem.paragraph(sentence_count: rand(1..6)),
+        body: Faker::Lorem.paragraph(sentence_count: rand(1..6)) + "Pretentious words to bypass the custom validator: post-modern, zeitgeist, humanity, invokes.",
         listing_id: listing.id,
         user_id: rand(1..TOTAL_USERS)
       )
     end
   end
 
-  rand(0..5).times do
-    Purchase.create()
-  end
+  id = ActiveRecord::Base.connection.execute("select last_value from users_id_seq").first["last_value"] + 1
 end
 
+rand(1..Listing.count / 2).times do
+  Purchase.create(
+    listing_id: rand(1..Listing.count),
+    user_id: rand(1..TOTAL_USERS)
+  )
+end
 
+# GENERATE ADMIN AND A FEW COMMUNITY MANAGER ACCOUNTS
 
+User.create(
+  email: "admin@mail.com",
+  password: "supercool"
+)
+user = User.last
+user_detail = UserDetail.new(
+  name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
+  bio: Faker::Lorem.paragraph(sentence_count: rand(2..5)),
+  super_user: true,
+  comms_mngr: false,
+  user_id: user.id
+)
+user_detail.save
+address = Address.new(
+  line_1: Faker::Address.street_address,
+  line_2: nil,
+  city: Faker::Address.city,
+  state: rand(0..7),
+  postcode: rand(1000..7999),
+  user_detail_id: user_detail.id
+)
+address.save
 
+User.create(
+  email: "mod@mail.com",
+  password: "kindacool"
+)
+user = User.last
+user_detail = UserDetail.new(
+  name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
+  bio: Faker::Lorem.paragraph(sentence_count: rand(2..5)),
+  super_user: false,
+  comms_mngr: true,
+  user_id: user.id
+)
+user_detail.save
+address = Address.new(
+  line_1: Faker::Address.street_address,
+  line_2: nil,
+  city: Faker::Address.city,
+  state: rand(0..7),
+  postcode: rand(1000..7999),
+  user_detail_id: user_detail.id
+)
+address.save

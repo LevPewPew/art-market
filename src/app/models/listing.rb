@@ -11,4 +11,6 @@ class Listing < ApplicationRecord
   validates :artist, presence: true
   validates :price, numericality: true
   validates :description, presence: true
+  validates :picture, presence: true
+
 end
