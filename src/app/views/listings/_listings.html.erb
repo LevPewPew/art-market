@@ -1,3 +1,13 @@
+<div>
+  <%= search_form_for @q do |f| %>
+
+    <%= f.label :artist_cont %>
+    <%= f.search_field :artist_cont %>
+
+    <%= f.submit %>
+  <% end %>
+</div>
+
 <table>
   <thead>
     <tr>

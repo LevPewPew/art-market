@@ -6,7 +6,10 @@ class ListingsController < ApplicationController
 
   # all non purchased listings
   def index
-    @listings = Listing.all.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)')
+    # @listings = Listing.all.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)')
+    # ransack gem (searchbar) attributes
+    @q = Listing.all.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)').ransack(params[:q])
+    @listings = @q.result(distinct: true)
   end
 
   # current users' listings that are unpurchased (i.e. there is not matching row in the purchases table)
