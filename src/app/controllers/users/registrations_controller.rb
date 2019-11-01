@@ -7,7 +7,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :set_user, only: [:destroy_other]
 
   def index
-    @users = User.all.page(params[:page]).per(25)
+    @q = User.all.ransack(params[:q])
+    @users = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def destroy_other

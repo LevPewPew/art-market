@@ -1,5 +1,17 @@
 <h1>All Users</h1>
 
+<div>
+  <% if @q %>
+    <%= search_form_for @q do |f| %>
+
+      <%= f.label :email_cont, "Search Users by Email" %>
+      <%= f.search_field :email_cont %>
+
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+</div>
+
 <table>
   <thead>
     <tr>
