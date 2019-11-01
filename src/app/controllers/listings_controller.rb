@@ -9,22 +9,22 @@ class ListingsController < ApplicationController
   # all non purchased listings
   def index
     @q = Listing.all.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)').ransack(params[:q])
-    @listings = @q.result(distinct: true)
+    @listings = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   # current users' listings that are unpurchased (i.e. there is not matching row in the purchases table)
   def my_listings
-    @listings = current_user.listings.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)')
+    @listings = current_user.listings.where('id NOT IN (SELECT DISTINCT(listing_id) FROM purchases)').page(params[:page]).per(10)
   end
 
   # any listing that has been purchased by the current user
   def my_purchases
-    @listings = Listing.joins(:purchase).merge(Purchase.where(user_id: current_user.id))
+    @listings = Listing.joins(:purchase).merge(Purchase.where(user_id: current_user.id)).page(params[:page]).per(10)
   end
 
   # any current user' listings that have been purchased
   def my_sales
-    @listings = current_user.listings.joins(:purchase).merge(Purchase.all)
+    @listings = current_user.listings.joins(:purchase).merge(Purchase.all).page(params[:page]).per(10)
   end
 
   def show
