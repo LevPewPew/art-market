@@ -111,18 +111,17 @@
     };
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
     var icon = {
-        // using a non local image as google maps need to download it, later should change to an image i am personally hosting
-        url: "http://pluspng.com/img-png/circle-png-circle-icon-1600.png",
-        scaledSize: new google.maps.Size(200, 200),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(100, 100)
-      }
+      // using a non local image as google maps need to download it, later should change to an image i am personally hosting
+      url: "http://pluspng.com/img-png/circle-png-circle-icon-1600.png",
+      scaledSize: new google.maps.Size(200, 200),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(100, 100)
+    }
     var marker = new google.maps.Marker({
       position: myCoords,
       map: map,
       icon: icon
     });
-
   }
 </script>
 
