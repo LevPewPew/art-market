@@ -187,7 +187,7 @@ styles.each do |style|
   Style.create(name: style)
 end
 
-TOTAL_USERS = 100
+TOTAL_USERS = 2
 
 id = 1
 TOTAL_USERS.times do |n|
@@ -204,13 +204,74 @@ TOTAL_USERS.times do |n|
     user_id: user.id
   )
   user_detail.save
+  addresses = [
+    {
+      line_1: "2 Emu Bank, Belconnen",
+      line_2: nil,
+      city: "Canberra",
+      state: 1,
+      postcode: "2617",
+      user_detail_id: user_detail.id
+    },
+    {
+      line_1: "201 Pacific Hwy, St Leonards",
+      line_2: nil,
+      city: "Sydney",
+      state: 2,
+      postcode: "2065",
+      user_detail_id: user_detail.id
+    },
+    {
+      line_1: "3 Tarakan Ct, Johnston",
+      line_2: nil,
+      city: "Darwin",
+      state: 3,
+      postcode: "0832",
+      user_detail_id: user_detail.id
+    },
+    {
+      line_1: "1006 Wynnum Rd, Cannon Hill",
+      line_2: nil,
+      city: "Brisbane",
+      state: 4,
+      postcode: "4170",
+      user_detail_id: user_detail.id
+    },
+    {
+      line_1: "575 North East Road, Gilles Plains",
+      line_2: nil,
+      city: "Adelaide",
+      state: 5,
+      postcode: "5086",
+      user_detail_id: user_detail.id
+    },
+    {
+      line_1: "268 Sandy Bay Rd, Sandy Bay",
+      line_2: nil,
+      city: nil,
+      state: 6,
+      postcode: "7005",
+      user_detail_id: user_detail.id
+    },
+    {
+      line_1: "120 Racecourse Rd, Flemington",
+      line_2: nil,
+      city: "Melbourne",
+      state: 7,
+      postcode: "3031",
+      user_detail_id: user_detail.id
+    },
+    {
+      line_1: "285 Walter Rd W, Morley",
+      line_2: nil,
+      city: "Perth",
+      state: 8,
+      postcode: "6062",
+      user_detail_id: user_detail.id
+    }
+  ]
   address = Address.new(
-    line_1: Faker::Address.street_address,
-    line_2: nil,
-    city: Faker::Address.city,
-    state: rand(0..7),
-    postcode: rand(1000..7999),
-    user_detail_id: user_detail.id
+    addresses[rand(0..7)]
   )
   address.save
 

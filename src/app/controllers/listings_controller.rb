@@ -38,7 +38,14 @@ class ListingsController < ApplicationController
     unnormalized_address = [line_1, line_2, city, state, postcode]
     unnormalized_address = unnormalized_address.reject { |field| !field.present? }
                                                .join(" ")
-    @coords = Geocoder.search("#{unnormalized_address}").first.coordinates
+    begin
+      @coords = Geocoder.search(unnormalized_address).first.coordinates
+    rescue
+      # latitude and longitude of the North Pole
+      @coords = [85, -135]
+      
+      # TODO pass through a notice/flash message saying address not available/real
+    end
 
     if !current_user.nil?
       session = Stripe::Checkout::Session.create(

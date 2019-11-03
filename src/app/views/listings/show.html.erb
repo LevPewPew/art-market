@@ -1,3 +1,4 @@
+<%# for google maps API %>
 <% provide :head_tags do %>
   <meta name='turbolinks-visit-control' content='reload'>
   <script>
@@ -99,14 +100,8 @@
 <br>
 <br>
 
-<div class="location-container">
-  <div class="location-marker">
-    <svg width="200" height="200">
-      <circle cx="100" cy="100" r="95" style="fill:rgba(186,59,70,0.2);stroke-width:3;stroke:rgba(186,59,70,1)" />
-    </svg>
-  </div>
-  <div id="map"></div>
-</div>
+
+<div id="map"></div>
 <script>
   function initMap(lat, lng) {
     var myCoords = new google.maps.LatLng(lat, lng);
@@ -115,7 +110,18 @@
       zoom: 17
     };
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
+    var icon = {
+        // using a non local image as google maps need to download it, later should change to an image i am personally hosting
+        url: "http://pluspng.com/img-png/circle-png-circle-icon-1600.png",
+        scaledSize: new google.maps.Size(200, 200),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(100, 100)
+      }
+    var marker = new google.maps.Marker({
+      position: myCoords,
+      map: map,
+      icon: icon
+    });
 
   }
 </script>
