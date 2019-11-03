@@ -1,3 +1,11 @@
+<% provide :head_tags do %>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%= -37.799705 %>, <%= 144.902798 %>)
+    });
+    </script>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -89,5 +97,22 @@
 
 <br>
 <br>
+
+<div id="map" style="height: 500px; width: 500px; background-color: red;"></div>
+<script>
+  function initMap(lat, lng) {
+    var myCoords = new google.maps.LatLng(lat, lng);
+    var mapOptions = {
+      center: myCoords,
+      zoom: 14
+    };
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    var marker = new google.maps.Marker({
+      position: myCoords,
+      map: map
+    });
+  }
+</script>
 
 <%= link_to 'Back', listings_path %>
