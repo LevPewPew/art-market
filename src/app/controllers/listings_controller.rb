@@ -29,6 +29,16 @@ class ListingsController < ApplicationController
 
   def show
     @comment = Comment.new
+    address = @listing.user.user_detail.address
+    line_1 = address.line_1
+    line_2 = address.line_2
+    city = address.city
+    state = address.state
+    postcode = address.postcode
+    unnormalized_address = [line_1, line_2, city, state, postcode]
+    unnormalized_address = unnormalized_address.reject { |field| !field.present? }
+                                               .join(" ")
+    @coords = Geocoder.search("#{unnormalized_address}").first.coordinates
 
     if !current_user.nil?
       session = Stripe::Checkout::Session.create(

@@ -2,16 +2,10 @@
   <meta name='turbolinks-visit-control' content='reload'>
   <script>
   document.addEventListener("DOMContentLoaded", function(){
-    initMap(<%= -37.8825299 %>, <%= 144.7868242 %>)
+    initMap(<%= @coords[0] %>, <%= @coords[1] %>)
   });
   </script>
 <% end %>
-
-<%= 'TESTING ADDRESS' %>
-<%= @listing.user.user_detail.address %>
-<%# Geocoder.search("Paris").first.coordinates %>
-<%# Geocoder.search("2 Weber Court, Altona Meadows Melbourne VIC 3028").first.coordinates %>
-<%= 'TESTING ADDRESS' %>
 
 <p id="notice"><%= notice %></p>
 
