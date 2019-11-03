@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:my_listings, :my_purchases, :my_sales, :new]
+  before_action :fill_user_details_prompt, only: [:new]
+  # before_action :reject_listing_if_user_details_blank, only: [:create]
   before_action :set_listing, only: [:show]
   before_action :set_user_listing, only: [:edit, :update, :destroy]
   after_action :join_styles_to_listing, only: [:create]
@@ -43,7 +45,7 @@ class ListingsController < ApplicationController
     rescue
       # latitude and longitude of the North Pole
       @coords = [85, -135]
-      
+
       # TODO pass through a notice/flash message saying address not available/real
     end
 
@@ -117,6 +119,15 @@ class ListingsController < ApplicationController
   end
 
   private
+    def fill_user_details_prompt
+      ud = current_user.user_detail
+      empty_user_details = [ud.name, ud.address.line_1, ud.address.city, ud.address.postcode].any? { |field| !field.present? }
+      if empty_user_details
+        flash[:new_listing] = "Wait! Please ensure details are filled in before listing a piece, otherwise potential buyers won't be able to see this information."
+        redirect_to edit_user_detail_path(current_user.user_detail)
+      end
+    end
+
     def set_listing
       @listing = Listing.find(params[:id])
     end

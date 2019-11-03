@@ -12,5 +12,4 @@ class Listing < ApplicationRecord
   validates :price, numericality: true
   validates :description, presence: true
   validates :picture, presence: true
-
 end
