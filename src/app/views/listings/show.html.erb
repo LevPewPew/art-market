@@ -2,14 +2,15 @@
   <meta name='turbolinks-visit-control' content='reload'>
   <script>
   document.addEventListener("DOMContentLoaded", function(){
-    initMap(<%= -37.799705 %>, <%= 144.902798 %>)
+    initMap(<%= -37.8825299 %>, <%= 144.7868242 %>)
   });
   </script>
 <% end %>
 
 <%= 'TESTING ADDRESS' %>
 <%= @listing.user.user_detail.address %>
-<%= @listing.user.user_detail.address %>
+<%# Geocoder.search("Paris").first.coordinates %>
+<%# Geocoder.search("2 Weber Court, Altona Meadows Melbourne VIC 3028").first.coordinates %>
 <%= 'TESTING ADDRESS' %>
 
 <p id="notice"><%= notice %></p>
@@ -104,20 +105,24 @@
 <br>
 <br>
 
-<div id="map" style="height: 500px; width: 500px; background-color: red;"></div>
+<div class="location-container">
+  <div class="location-marker">
+    <svg width="200" height="200">
+      <circle cx="100" cy="100" r="95" style="fill:rgba(186,59,70,0.2);stroke-width:3;stroke:rgba(186,59,70,1)" />
+    </svg>
+  </div>
+  <div id="map"></div>
+</div>
 <script>
   function initMap(lat, lng) {
     var myCoords = new google.maps.LatLng(lat, lng);
     var mapOptions = {
       center: myCoords,
-      zoom: 14
+      zoom: 17
     };
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-    var marker = new google.maps.Marker({
-      position: myCoords,
-      map: map
-    });
+
   }
 </script>
 
