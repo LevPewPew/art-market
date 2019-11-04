@@ -69,7 +69,8 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.new(listing_params)
 
     respond_to do |format|
-      if @listing.save && verify_recaptcha(model: @listing)
+      # only ask for reCAPTCHA on deployed environment (i could have made seperate keys for each domain but i was lazy
+      if @listing.save && (verify_recaptcha(model: @listing) || request.base_url == 'http://localhost:3000')
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else

@@ -45,7 +45,10 @@
     <%= form.file_field :picture, accept: 'image/png, image/gif, image/jpeg, image/jpg' %>
   </div>
 
-  <%= recaptcha_tags %>
+  <%# only ask for reCAPTCHA on deployed environment (i could have made seperate keys for each domain but i was lazy %>
+  <% if request.base_url != 'http://localhost:3000' %>
+    <%= recaptcha_tags %>
+  <% end%>
 
   <div class="actions">
     <%= form.submit %>
