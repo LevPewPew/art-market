@@ -69,7 +69,7 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.new(listing_params)
 
     respond_to do |format|
-      if @listing.save
+      if @listing.save && verify_recaptcha(model: @listing)
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
