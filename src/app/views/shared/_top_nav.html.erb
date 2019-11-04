@@ -1,16 +1,16 @@
 <header class="header">
-    <div class="company">
-      <%= link_to(root_path) do %>
-        <div class="name">
-          <h1>Art Haus</h1>
-        </div>
+  <div class="company">
+    <%= link_to(root_path) do %>
+      <div class="name">
+        <h1>Art Haus</h1>
+      </div>
+    <% end %>
+    <% if !current_user.nil? %>
+      <% if current_user.user_detail.super_user %>
+        <%= link_to 'Admin Dashboard', admin_dashboard_path %>
       <% end %>
-      <% if !current_user.nil? %>
-        <% if current_user.user_detail.super_user %>
-            <%= link_to 'Admin Dashboard', admin_dashboard_path %>
-        <% end %>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
   <div class="links">
     <%= link_to 'Listing New', new_listing_path %>
     <%= link_to 'Listing Index', listings_path %>
