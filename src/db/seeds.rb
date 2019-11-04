@@ -304,6 +304,8 @@ TOTAL_USERS.times do |n|
   id = ActiveRecord::Base.connection.execute("select last_value from users_id_seq").first["last_value"] + 1
 end
 
+user_id = 0
+listing_id = 0
 loop do
   user_id = rand(1..TOTAL_USERS)
   listing_id = rand(1..Listing.count)
