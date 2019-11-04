@@ -69,7 +69,7 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.new(listing_params)
 
     respond_to do |format|
-      # only ask for reCAPTCHA on deployed environment (i could have made seperate keys for each domain but i was lazy
+      # only ask for reCAPTCHA on deployed environment, there aren't seperate keys so solve this problem as doing it this way also means unit tests don't fail due to actually being robots
       if @listing.save && (verify_recaptcha(model: @listing) || request.base_url == 'http://localhost:3000')
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }

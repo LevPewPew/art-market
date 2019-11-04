@@ -45,7 +45,7 @@
     <%= form.file_field :picture, accept: 'image/png, image/gif, image/jpeg, image/jpg' %>
   </div>
 
-  <%# only ask for reCAPTCHA on deployed environment (i could have made seperate keys for each domain but i was lazy %>
+  <%# only ask for reCAPTCHA on deployed environment, there aren't seperate keys so solve this problem as doing it this way also means unit tests don't fail due to actually being robots %>
   <% if request.base_url != 'http://localhost:3000' %>
     <%= recaptcha_tags %>
   <% end%>
