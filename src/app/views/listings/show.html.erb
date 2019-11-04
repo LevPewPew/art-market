@@ -30,7 +30,12 @@
   <%= @listing.price %>
 </p>
 
-<%# TODO add listing styles to display %>
+<p>
+  <strong>Style/s:</strong>
+  <% @listing.listings_styles.each do |listing_style| %>
+    <%= listing_style.style.name + '.' unless listing_style.style.name.downcase == 'none' %>
+  <% end %>
+</p>
 
 <p>
   <strong>Description:</strong>
@@ -75,7 +80,9 @@
 
 <hr>
 
-<% if !current_user.nil? %>
+<% if current_user.nil? %>
+  <%= link_to "Sign In to Purchase!", new_user_session_path %>
+<% else %>
   <% if !@listing.purchase && @listing.user.id != current_user.id %>
     <button data-stripe="payment">Purchase</button>
 
@@ -99,7 +106,6 @@
 
 <br>
 <br>
-
 
 <div id="map"></div>
 <script>
