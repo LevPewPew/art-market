@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Logs In" do
+RSpec.feature "Log In" do
   let!(:project) { FactoryBot.create(:project) }
 
   it "updates a project successfully" do
