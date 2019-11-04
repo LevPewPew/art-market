@@ -187,7 +187,7 @@ styles.each do |style|
   Style.create(name: style)
 end
 
-TOTAL_USERS = 2
+TOTAL_USERS = 10
 
 id = 1
 TOTAL_USERS.times do |n|
@@ -304,10 +304,17 @@ TOTAL_USERS.times do |n|
   id = ActiveRecord::Base.connection.execute("select last_value from users_id_seq").first["last_value"] + 1
 end
 
+loop do
+  user_id = rand(1..TOTAL_USERS)
+  listing_id = rand(1..Listing.count)
+  if user_id != Listing.find(listing_id).user_id
+    break
+  end
+end
 rand(1..Listing.count / 2).times do
   Purchase.create(
-    listing_id: rand(1..Listing.count),
-    user_id: rand(1..TOTAL_USERS)
+    listing_id: listing_id,
+    user_id: user_id
   )
 end
 
