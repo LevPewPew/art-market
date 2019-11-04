@@ -215,7 +215,9 @@ def create_listing
   fill_in "Artist", with: "Picasso"
   fill_in "Price", with: 123
   fill_in "Description", with: "Some guy with a nose where his cheeck should be, post-modern zeitgeist"
-  select "ASCII art", from: "Style"
+  select "ASCII art", from: "listing_listings_styles_attributes_0_style_id"
+  select "Art Brut", from: "listing_listings_styles_attributes_1_style_id"
+  select "Art Deco", from: "listing_listings_styles_attributes_2_style_id"
   click_button "Create Listing"
 end
 
@@ -223,6 +225,7 @@ RSpec.feature "Create a Listing" do
   it "User creates a Listing succesfully" do
     sign_up
     fill_user_details
+    create_styles
 
     visit "/"
     click_link "Listing New"
@@ -230,9 +233,11 @@ RSpec.feature "Create a Listing" do
     fill_in "Artist", with: "Picasso"
     fill_in "Price", with: 123
     fill_in "Description", with: "Some guy with a nose where his cheeck should be, post-modern zeitgeist"
-    fill_in "Style", with: "1"
+    select "ASCII art", from: "listing_listings_styles_attributes_0_style_id"
+    select "Art Brut", from: "listing_listings_styles_attributes_1_style_id"
+    select "Art Deco", from: "listing_listings_styles_attributes_2_style_id"
     click_button "Create Listing"
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content("Listing was successfully created.")
   end
 
   # it "User cannot sign up with short password" do
