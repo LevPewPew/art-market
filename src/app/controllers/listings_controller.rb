@@ -1,7 +1,6 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:my_listings, :my_purchases, :my_sales, :new]
   before_action :fill_user_details_prompt, only: [:new]
-  # before_action :reject_listing_if_user_details_blank, only: [:create]
   before_action :set_listing, only: [:show]
   before_action :set_user_listing, only: [:edit, :update, :destroy]
   after_action :join_styles_to_listing, only: [:create]
@@ -124,7 +123,7 @@ class ListingsController < ApplicationController
     def join_styles_to_listing
       listing = Listing.last
       listings_style = ListingsStyle.last
-      listings_style.update(listing_id: listing.id)
+      listings_style.update(listing_id: listing.id) unless listing.nil?
     end
 
     def listing_params

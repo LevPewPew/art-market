@@ -240,59 +240,21 @@ RSpec.feature "Create a Listing" do
     expect(page).to have_content("Listing was successfully created.")
   end
 
-  # it "User cannot sign up with short password" do
-  #   visit "/"
-  #   click_link "Sign In/Up"
-  #   fill_in "Email", with: "capy1@mail.com"
-  #   fill_in "Password", with: "asd"
-  #   click_button "Log in"
-  #   expect(page).to have_content("Sign up")
-  # end
+  it "User cannot make untitled listing" do
+    sign_up
+    fill_user_details
+    create_styles
 
-  # it "User cannot sign up without valid email" do
-  #   visit "/"
-  #   click_link "Sign In/Up"
-  #   fill_in "Email", with: "capy1mail.com"
-  #   fill_in "Password", with: "asdasd"
-  #   click_button "Log in"
-  #   expect(page).to have_content("Sign up")
-  # end
+    visit "/"
+    click_link "Listing New"
+    fill_in "Title", with: ""
+    fill_in "Artist", with: "Picasso"
+    fill_in "Price", with: 123
+    fill_in "Description", with: "Some guy with a nose where his cheeck should be, post-modern zeitgeist"
+    select "ASCII art", from: "listing_listings_styles_attributes_0_style_id"
+    select "Art Brut", from: "listing_listings_styles_attributes_1_style_id"
+    select "Art Deco", from: "listing_listings_styles_attributes_2_style_id"
+    click_button "Create Listing"
+    expect(page).to have_content("New Listing")
+  end
 end
-
-# RSpec.feature "Log In" do
-#   it "Logs a User in successfully" do
-#     sign_up
-#     log_out
-
-#     visit "/"
-#     click_link "Sign In/Up"
-#     fill_in "Email", with: "capy1@mail.com"
-#     fill_in "Password", with: "asdasd1"
-#     click_button "Log in"
-#     expect(page).to have_content("Signed in successfully.")
-#   end
-
-#   it "Does not sign in with wrong email" do
-#     sign_up
-#     log_out
-
-#     visit "/"
-#     click_link "Sign In/Up"
-#     fill_in "Email", with: "WRONG@mail.com"
-#     fill_in "Password", with: "asdasd1"
-#     click_button "Log in"
-#     expect(page).to have_content("Invalid Email or password.")
-#   end
-
-#   it "Does not sign in with wrong password" do
-#     sign_up
-#     log_out
-
-#     visit "/"
-#     click_link "Sign In/Up"
-#     fill_in "Email", with: "capy1@mail.com"
-#     fill_in "Password", with: "WRONG1"
-#     click_button "Log in"
-#     expect(page).to have_content("Invalid Email or password.")
-#   end
-# end
