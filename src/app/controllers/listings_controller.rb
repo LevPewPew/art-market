@@ -49,9 +49,7 @@ class ListingsController < ApplicationController
     end
 
     if !current_user.nil?
-      session = helpers.stripe_session
-    
-      @session_id = session.id
+      @session_id = helpers.stripe_session.id
     end
   end
 

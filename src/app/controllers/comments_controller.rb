@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show]
+  before_action :set_sanitized_comment, only: [:edit, :update, :destroy]
   before_action :set_listing, only: [:edit, :destroy]
 
   def show
@@ -44,6 +45,19 @@ class CommentsController < ApplicationController
     def set_comment
       @comment = Comment.find(params[:id])
     end
+
+    def set_sanitized_comment
+      if current_user.nil?
+        redirect_to no_access_path
+      else
+        @comment = current_user.comments.find_by_id(params[:id])
+        if @comment.nil?
+          redirect_to no_access_path
+        end
+      end
+    end
+
+    # TODO difference between find and find_by_id ?, change all to find if no difference
 
     def set_listing
       @listing = Listing.find(params[:listing_id])

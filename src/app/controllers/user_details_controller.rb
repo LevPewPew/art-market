@@ -1,5 +1,6 @@
 class UserDetailsController < ApplicationController
-  before_action :set_user_detail, only: [:edit, :update]
+  # before_action :set_user_detail, only: [:edit, :update]
+  before_action :set_sanitized_user_detail, only: [:edit, :update]
   before_action :set_user_detail_address, only: [:edit, :update]
 
   def edit
@@ -25,8 +26,15 @@ class UserDetailsController < ApplicationController
   end
 
   private
-    def set_user_detail
-      @user_detail = UserDetail.find(params[:id])
+    def set_sanitized_user_detail
+      if current_user.nil?
+        redirect_to no_access_path
+      else
+        @user_detail = UserDetail.find(params[:id])
+        if !(@user_detail.user_id == current_user.id || current_user.user_detail.super_user)
+          redirect_to no_access_path
+        end
+      end
     end
 
     def set_user_detail_address
