@@ -30,8 +30,7 @@ Rails.application.routes.draw do
   get '/my_sales', to: 'listings#my_sales', as: 'my_sales'
 
   post '/comments', to: 'comments#create', as: 'listing_comments'
-  get '/listings/:listing_id/comments/:id', to: 'comments#show', as: 'listing_comment'
-  put '/listings/:listing_id/comments/:id', to: 'comments#update'
+  put '/listings/:listing_id/comments/:id', to: 'comments#update', as: 'listing_comment'
   patch '/listings/:listing_id/comments/:id', to: 'comments#update'
   delete '/listings/:listing_id/comments/:id', to: 'comments#destroy'
   get '/listings/:listing_id/comments/:id/edit', to: 'comments#edit', as: 'edit_listing_comment'
