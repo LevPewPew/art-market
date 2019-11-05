@@ -6,9 +6,9 @@ class UserDetailsController < ApplicationController
   def edit
     # the only time user is directed to fill in UserDetail is when making a new listing and there is no address info. this is needed instead of just always request.referer sometimes the user_settings page is reached not by clicking edit settings but by attempting to create a new listing without having enough details.
     if !flash[:new_listing].nil? && flash[:new_listing].include?('Account details are missing!')
-      session[:settings_prev_page] = new_listing_path
+      session[:settings_update_next_page] = new_listing_path
     else
-      session[:settings_prev_page] = request.referer
+      session[:settings_update_next_page] = request.referer
     end
   end
 
@@ -17,7 +17,7 @@ class UserDetailsController < ApplicationController
       if @user_detail.update(user_detail_params)
         format.html { 
           begin
-            redirect_to session[:settings_prev_page], notice: 'user_detail was successfully updated.'
+            redirect_to session[:settings_update_next_page], notice: 'user_detail was successfully updated.'
           rescue
             redirect_to root_url
           end

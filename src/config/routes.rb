@@ -29,9 +29,7 @@ Rails.application.routes.draw do
   get '/my_purchases', to: 'listings#my_purchases', as: 'my_purchases'
   get '/my_sales', to: 'listings#my_sales', as: 'my_sales'
 
-  get '/comments', to: 'comments#index', as: 'listing_comments'
-  post '/comments', to: 'comments#create'
-  get '/comments/new', to: 'comments#new', as: 'new_comment'
+  post '/comments', to: 'comments#create', as: 'listing_comments'
   get '/listings/:listing_id/comments/:id', to: 'comments#show', as: 'listing_comment'
   put '/listings/:listing_id/comments/:id', to: 'comments#update'
   patch '/listings/:listing_id/comments/:id', to: 'comments#update'
