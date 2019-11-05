@@ -4,7 +4,12 @@ class UserDetailsController < ApplicationController
   before_action :set_user_detail_address, only: [:edit, :update]
 
   def edit
-    session[:settings_prev_page] = request.referer
+    # the only time user is directed to fill in UserDetail is when making a new listing and there is no address info. this is needed instead of just always request.referer sometimes the user_settings page is reached not by clicking edit settings but by attempting to create a new listing without having enough details.
+    if !flash[:new_listing].nil? && flash[:new_listing].include?('Account details are missing!')
+      session[:settings_prev_page] = new_listing_path
+    else
+      session[:settings_prev_page] = request.referer
+    end
   end
 
   def update

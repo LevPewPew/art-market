@@ -106,7 +106,7 @@ class ListingsController < ApplicationController
       ud = current_user.user_detail
       empty_user_details = [ud.name, ud.address.line_1, ud.address.city, ud.address.postcode].any? { |field| !field.present? }
       if empty_user_details
-        flash[:new_listing] = "Wait! Please ensure details are filled in before listing a piece, otherwise potential buyers won't be able to see this information."
+        flash[:new_listing] = "Wait! Account details are missing! Please ensure details and address are filled in before listing a piece, otherwise potential buyers won't be able to see this information."
         redirect_to edit_user_detail_path(current_user.user_detail)
       end
     end

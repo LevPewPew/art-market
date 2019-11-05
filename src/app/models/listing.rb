@@ -11,5 +11,6 @@ class Listing < ApplicationRecord
   validates :artist, presence: true
   validates :price, numericality: true
   validates :description, presence: true
-  validates :picture, presence: true
+  # no attached/presence validator currently exists for active storage.
+  # TODO write/paste a custom validator
 end
