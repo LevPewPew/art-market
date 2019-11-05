@@ -51,6 +51,9 @@ class ListingsController < ApplicationController
     if !current_user.nil?
       @session_id = helpers.stripe_session.id
     end
+
+    # need this instead of before_action authenticate_user! because comment form is embedded on a listings#show page, allows user to be redirected back to that show page. NOTE: don't simplify this to just @listing for the path, devise doesn't seem to like that and will just redirect you to root
+    store_location_for(:user, listing_path(@listing))
   end
 
   def new

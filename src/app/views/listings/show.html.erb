@@ -45,7 +45,11 @@
 <p>
   <strong>Image:</strong>
   <br>
-  <%= image_tag @listing.picture, width: "300px" if @listing.picture.attached? %>
+  <% if @listing.picture.attached? %>
+    <%= image_tag @listing.picture, width: "300px" %>
+  <% else %>
+    <%= image_tag 'missing-image', width: "300px"%>
+  <% end %>
 </p>
 
 <% if !current_user.nil? && (current_user.id == @listing.user_id || current_user.user_detail.super_user) %>
