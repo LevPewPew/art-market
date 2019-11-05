@@ -48,6 +48,11 @@
   <%= image_tag @listing.picture, width: "300px" if @listing.picture.attached? %>
 </p>
 
+<% if !current_user.nil? && (current_user.id == @listing.user_id || current_user.user_detail.super_user) %>
+  <td><%= link_to 'Edit', edit_listing_path(@listing) %></td>
+  <td><%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+
 <hr>
 
 <p>
