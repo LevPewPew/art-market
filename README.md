@@ -122,5 +122,8 @@ A new artist who already has an account logs in and decides they want to list on
 * R16	Detail any third party services that your app will use
 * R17	Describe your projects models in terms of the relationships (active record associations) they have with each other
 * R18	Discuss the database relations to be implemented in your application
-* R19	Provide your database schema design
+* R19	Provide your database schema design, basically tack onto ERDs info about nullable and defaults
 * R20	Describe the way tasks are allocated and tracked in your project
+
+rubrick
+* Describe the way tasks are planned and tracked in your project (Shows significant planning for how tasks are planned and tracked, including a full description of the process and of the tools used)
