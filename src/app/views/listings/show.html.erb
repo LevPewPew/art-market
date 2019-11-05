@@ -70,6 +70,7 @@
       </div>
       <%= comment.body %>
         <% if !current_user.nil? && (current_user.id == comment.user_id || current_user.user_detail.super_user || current_user.user_detail.comms_mngr) %>
+          <%# need to specify explicitly what params get what values when doing a nested form like this %>
           <%= link_to 'Edit', edit_listing_comment_path(listing_id: @listing.id, id: comment.id) %>
           <%= link_to 'Destroy', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
