@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
   def edit
   end
 
+  # changed from the scaffold generated errors to flash errors due to new Comment form nested on a Listing show page
   def create
     @comment = Comment.new(comment_params)
 
