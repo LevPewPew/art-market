@@ -5,10 +5,8 @@
         <h1>Art Haus</h1>
       </div>
     <% end %>
-    <% if !current_user.nil? %>
-      <% if current_user.user_detail.super_user %>
-        <%= link_to 'Admin Dashboard', admin_dashboard_path %>
-      <% end %>
+    <% if !current_user.nil? && current_user.user_detail.super_user %>
+      <%= link_to 'Admin Dashboard', admin_dashboard_path %>
     <% end %>
   </div>
   <div class="links">

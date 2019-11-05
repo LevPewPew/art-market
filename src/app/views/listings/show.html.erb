@@ -60,12 +60,10 @@
         <em><%= comment.created_at %></em>
       </div>
       <%= comment.body %>
-      <% if !current_user.nil? %>
-        <% if current_user.id == comment.user_id || current_user.user_detail.super_user || current_user.user_detail.comms_mngr %>
+        <% if !current_user.nil? && (current_user.id == comment.user_id || current_user.user_detail.super_user || current_user.user_detail.comms_mngr) %>
           <%= link_to 'Edit', edit_listing_comment_path(listing_id: @listing.id, id: comment.id) %>
           <%= link_to 'Destroy', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
-      <% end %>
     </div>
   <% end %>
 </p>

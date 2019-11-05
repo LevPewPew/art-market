@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @q = User.all.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(10)
 
-    if current_user.nil? or !current_user.user_detail.super_user
+    if current_user.nil? || !current_user.user_detail.super_user
       redirect_to no_access_path
     end
   end
