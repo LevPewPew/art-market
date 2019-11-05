@@ -119,8 +119,8 @@ class ListingsController < ApplicationController
       if current_user.nil?
         redirect_to no_access_path
       else
-        @listing = current_user.listings.find_by(id: params[:id])
-        if @listing.nil?
+        @listing = Listing.find_by(id: params[:id])
+        if !(current_user.id == @listing.user_id || current_user.user_detail.super_user)
           redirect_to no_access_path
         end
       end
