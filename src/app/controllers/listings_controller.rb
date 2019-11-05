@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:my_listings, :my_purchases, :my_sales, :new]
   before_action :fill_user_details_prompt, only: [:new]
   before_action :set_listing, only: [:show]
-  before_action :set_user_listing, only: [:edit, :update, :destroy]
+  before_action :set_sanitized_listing, only: [:edit, :update, :destroy]
   after_action :join_styles_to_listing, only: [:create]
 
   # all the "q" stuff and .ransack, is for the ransack gem which is a searchbar
@@ -114,10 +114,14 @@ class ListingsController < ApplicationController
       @listing = Listing.find(params[:id])
     end
 
-    def set_user_listing
-      @listing = current_user.listings.find_by_id(params[:id])
-      if @listing.nil?
-        redirect_to listings_path
+    def set_sanitized_listing
+      if current_user.nil?
+        redirect_to no_access_path
+      else
+        @listing = current_user.listings.find_by_id(params[:id])
+        if @listing.nil?
+          redirect_to no_access_path
+        end
       end
     end
 
