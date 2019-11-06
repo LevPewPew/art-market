@@ -1,3 +1,50 @@
+:root {
+  --card-margin: 10px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  .card {
+    width: calc((100% / 4) - var(--card-margin) - 10px);
+    height: calc(500px - var(--card-margin)); //TODO try make this a ratio of width somehow
+    margin: var(--card-margin);
+    border: 1px solid lightcoral;
+    border-radius: 10px;
+    padding: 5px;
+    display: grid;
+    grid-template-rows: 75% auto;
+    grid-template-columns: auto;
+    background: lightcoral;
+
+    .image {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        max-width:100%;
+        max-height:100%;  
+        border-radius: 5px;
+      }
+    }
+
+    .info {
+      margin: 10px;
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+
+      .artist-and-price {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+// google maps
+
 .location-container {
   height: 500px;
   width: 500px;
@@ -14,6 +61,7 @@
   }
 
 }
+
 #map {
   height: 500px;
   width: 500px;
