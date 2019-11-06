@@ -2,9 +2,22 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+
+  a {
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid white;
+
+    &:hover {
+      border: 1px solid lightcoral;
+      background: white;
+    }
+  }
+  
   
   .top-links {
     margin: 10px 0px;
+    // border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
     .left-links {
@@ -12,10 +25,19 @@
       align-items: center;
       
       .company-name {
+        transition: transform 0.5s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
         a {
           font-size: 36px;
           font-weight: bold;
-          text-decoration: none;
+    
+          &:hover {
+            border: 1px solid white;
+          }
         }
       }
     }
@@ -28,6 +50,8 @@
   
   .bottom-links {
     margin: 10px 0px;
+    border-top: 1px solid black;
+    padding-top: 15px;
     display: flex;
     justify-content: center;
     .center-links {
@@ -37,13 +61,4 @@
     }
   }
 
-  a {
-    padding: 15px;
-    border-radius: 5px;
-    background: lightcoral;
-  }
-
-  a:hover {
-    background: rgb(212, 113, 113);
-  }
 }

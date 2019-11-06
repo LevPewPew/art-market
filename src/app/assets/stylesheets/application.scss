@@ -20,8 +20,10 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
   /* margin: 0px; */
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
+  color: black;
 }
 
 #{$a-tags} {
+  text-decoration: none;
   color: black;
 }
