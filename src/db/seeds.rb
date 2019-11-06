@@ -187,7 +187,7 @@ styles.each do |style|
   Style.create(name: style)
 end
 
-TOTAL_USERS = 10
+TOTAL_USERS = 100
 
 id = 1
 TOTAL_USERS.times do |n|
