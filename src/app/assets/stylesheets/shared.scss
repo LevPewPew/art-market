@@ -20,6 +20,7 @@
     // border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
+
     .left-links {
       display: flex;
       align-items: center;
@@ -51,9 +52,10 @@
   .bottom-links {
     margin: 10px 0px;
     border-top: 1px solid black;
-    padding-top: 15px;
+    padding-top: 20px;
     display: flex;
     justify-content: center;
+
     .center-links {
       display: flex;
       justify-content: center;
