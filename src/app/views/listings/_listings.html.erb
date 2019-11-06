@@ -14,18 +14,18 @@
 
 <div class="cards-container">
   <% @listings.each do |listing| %>
-    <div class="card">
-      <div class="image">
-        <%= image_tag listing.picture %>
-      </div>
-      <div class="info">
-        <h3><%= listing.title.slice(0...-1) %></h3>
-        <div class="artist-and-price">
-          <em>by <%= listing.artist %></em>
-          $<%= number_with_delimiter(listing.price, delimiter: ',') %>
+    <%= link_to listing, class: 'card' do %>
+        <div class="image">
+          <%= image_tag listing.picture %>
         </div>
-      </div>
-    </div>
+        <div class="info">
+          <h3><%= listing.title.slice(0...-1) %></h3>
+          <div class="artist-and-price">
+            <em>by <%= listing.artist %></em>
+            $<%= number_with_delimiter(listing.price, delimiter: ',') %>
+          </div>
+        </div>
+    <% end %>
   <% end %>
 </div>
 
