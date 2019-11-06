@@ -122,8 +122,13 @@ A new artist who already has an account logs in and decides they want to list on
 * R16	Detail any third party services that your app will use
 * R17	Describe your projects models in terms of the relationships (active record associations) they have with each other
 * R18	Discuss the database relations to be implemented in your application
-* R19	Provide your database schema design, basically tack onto ERDs info about nullable and defaults
+* R19	Provide your database schema design, basically tack onto ERDs info about nullable and defaults, talk about the types etc. talk abouy why you used certain types. example why postfcode is string, to have leading zeros.
 * R20	Describe the way tasks are allocated and tracked in your project
 
 rubrick
 * Describe the way tasks are planned and tracked in your project (Shows significant planning for how tasks are planned and tracked, including a full description of the process and of the tools used)
+* Explain the different high-level components (abstractions) in your App: is talk about active record and how SQL is abstracted to helpers. form helpers, active storage, devise, stripe, etc. mention active record is an ORM
+* sanitziation is allowing permitted paramaters, form validation, and formatting values a user may enter for the database to use.
+  - Sanitizing will remove any illegal character from the data.
+  - Validating will determine if the data is in proper form.
+* user stories follow this structure: as a <something> i can do <something> to achieve <something> https://www.atlassian.com/agile/project-management/user-stories

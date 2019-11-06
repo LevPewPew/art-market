@@ -18,8 +18,7 @@
       <th>Title</th>
       <th>Artist</th>
       <th>Price</th>
-      <th>Description</th>
-      <th>User</th>
+      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -35,7 +34,6 @@
             <%= image_tag listing.picture, height: "100px" if listing.picture.attached? %>
           </div>
         </td>
-        <td><%= listing.user.user_detail.name %></td>
         <td><%= link_to 'Show', listing %></td>
         <% if !current_user.nil? && (current_user.id == listing.user_id || current_user.user_detail.super_user) %>
           <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
