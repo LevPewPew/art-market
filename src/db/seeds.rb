@@ -204,6 +204,7 @@ TOTAL_USERS.times do |n|
     user_id: user.id
   )
   user_detail.save
+  # not using Faker for addresses so that there is real addresses for google maps API
   addresses = [
     {
       line_1: "2 Emu Bank, Belconnen",
@@ -294,7 +295,8 @@ TOTAL_USERS.times do |n|
 
     rand(0..5).times do
       Comment.create(
-        body: Faker::Lorem.paragraph(sentence_count: rand(1..6)) + "Pretentious words to bypass the custom validator: post-modern, zeitgeist, humanity, invokes.",
+        # a pretentious word is inserted here to pass the custom validator
+        body: Faker::Lorem.paragraph(sentence_count: rand(1..3)) + "Humanity." + Faker::Lorem.paragraph(sentence_count: rand(1..3)),
         listing_id: listing.id,
         user_id: rand(1..TOTAL_USERS)
       )
