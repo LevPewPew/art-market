@@ -1,17 +1,49 @@
 .header {
   display: flex;
   justify-content: space-between;
-
-  .company {
+  flex-direction: column;
+  
+  .top-links {
+    margin: 10px 0px;
     display: flex;
+    justify-content: space-between;
+    .left-links {
+      display: flex;
+      align-items: center;
+      
+      .company-name {
+        a {
+          font-size: 36px;
+          font-weight: bold;
+          text-decoration: none;
+        }
+      }
+    }
+    
+    .right-links {
+      display: flex;
+      justify-content: end;
+    }
+  }
+  
+  .bottom-links {
+    margin: 10px 0px;
+    display: flex;
+    justify-content: center;
+    .center-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
-  .links {
-    display: flex;
-    justify-content: end;
+  a {
+    padding: 15px;
+    border-radius: 5px;
+    background: lightcoral;
+  }
 
-    a {
-      margin: 5px;
-    }
+  a:hover {
+    background: rgb(212, 113, 113);
   }
 }
