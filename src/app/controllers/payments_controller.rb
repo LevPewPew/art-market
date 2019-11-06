@@ -14,9 +14,6 @@ class PaymentsController < ApplicationController
     listing_id = payment.metadata.listing_id
     user_id = payment.metadata.user_id
 
-    p "listing_id = " + listing_id
-    p "user_id = " + user_id
-
     # need this as stripe is expecting it and will keep retrying until it gets it
     status 200
   end

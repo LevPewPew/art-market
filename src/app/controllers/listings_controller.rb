@@ -38,7 +38,7 @@ class ListingsController < ApplicationController
     postcode = address.postcode
     unnormalized_address = [line_1, line_2, city, state, postcode]
     unnormalized_address = unnormalized_address.reject { |field| !field.present? }
-                                               .join(" ")
+                                               .join(' ')
     begin
       @coords = Geocoder.search(unnormalized_address).first.coordinates
     rescue
