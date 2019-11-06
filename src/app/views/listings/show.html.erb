@@ -62,7 +62,8 @@
 <p>
   <strong>Discussion:</strong>
   <br>
-  <% @listing.comments.each do |comment| %>
+  <%# need to ensure order by id otherwise when a comms_mngr edits, rails sends the edited to end of the array, but we want to preserve by original post order %>
+  <% @listing.comments.order('id').each do |comment| %>
     <div>
       <div>
         <em><%= comment.user.user_detail.name %></em>
