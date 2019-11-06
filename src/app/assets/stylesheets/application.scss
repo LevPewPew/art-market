@@ -27,3 +27,17 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
   text-decoration: none;
   color: black;
 }
+
+h1 {
+  margin: 18px;
+}
+
+.search-bar {
+  margin: 18px;
+  width: calc(100% - 36px);
+  height: 40px;
+  font-size: 18px;
+  font-weight: lighter;
+  background:rgba(244,244,244,0.01);
+  // background:rgb(244,244,244);
+}

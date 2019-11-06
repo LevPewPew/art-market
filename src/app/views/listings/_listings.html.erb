@@ -1,30 +1,22 @@
-<%# ransack gem search bar %>
-
-<div>
-  <% if @q %>
-    <%= search_form_for @q do |f| %>
-
-      <%= f.label :artist_cont, "Search Artists" %>
-      <%= f.search_field :artist_cont %>
-
-      <%= f.submit %>
-    <% end %>
+<% if @q %>
+  <%= search_form_for @q do |f| %>
+    <%= f.search_field :artist_cont, placeholder: '   Search Works by Artist', class: "search-bar" %>
   <% end %>
-</div>
+<% end %>
 
 <div class="cards-container">
   <% @listings.each do |listing| %>
     <%= link_to listing, class: 'card' do %>
-        <div class="image">
-          <%= image_tag listing.picture %>
+      <div class="image">
+        <%= image_tag listing.picture %>
+      </div>
+      <div class="info">
+        <h3><%= listing.title.slice(0...-1) %></h3>
+        <div class="artist-and-price">
+          <em>by <%= listing.artist %></em>
+          $<%= number_with_delimiter(listing.price, delimiter: ',') %>
         </div>
-        <div class="info">
-          <h3><%= listing.title.slice(0...-1) %></h3>
-          <div class="artist-and-price">
-            <em>by <%= listing.artist %></em>
-            $<%= number_with_delimiter(listing.price, delimiter: ',') %>
-          </div>
-        </div>
+      </div>
     <% end %>
   <% end %>
 </div>
