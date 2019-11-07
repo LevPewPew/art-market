@@ -109,6 +109,10 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
           background: black;
           font-size: 18px;
           color: white;
+
+          &:focus {
+            outline: none;
+          }
         }
       }
     }
@@ -166,20 +170,20 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
 
 .comments-container {
   width: 50%;
-  margin: auto;
+  margin: 50px auto;
   display: flex;
   flex-direction: column;
 
   h3, h4 {
-    margin-left: 10px;
+    margin-left: 15px;
   }
 
   .comment-container {
+    margin: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    margin: 5px;
-    border-radius: 5px;
-
+    
     .user-name {
       margin: 5px;
       font-size: 14px;
@@ -190,11 +194,11 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
       margin: 5px;
       font-size: 14px;
     }
-
-
+    
+    
     &:nth-of-type(2n + 1) {
       background: var(--off-black);
-
+      
       .user-name {
         color: floralwhite;
       }
@@ -217,26 +221,16 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
   }
 }
 
-// google maps
-
 .location-container {
-  height: 500px;
-  width: 500px;
-  position: relative;
-
-  .location-marker {
-    height: 100%;
+  margin: 50px;
+  
+  #map {
+    height: 675px;
     width: 100%;
-    position: absolute;
-    display: flex;
-    z-index: 10;
-    justify-content: center;
-    align-items: center;
+    background-color: black;
   }
 }
 
-#map {
-  height: 500px;
-  width: 500px;
-  background-color: red;
+.return-link {
+  margin: 50px;
 }
