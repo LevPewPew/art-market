@@ -11,7 +11,7 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
   flex-wrap: wrap;
 
   .card {
-    width: calc((100% / 4) - var(--card-margin) - 10px);
+    width: calc((100% / 3) - var(--card-margin) - 10px);
     height: calc(500px - var(--card-margin)); //TODO try make this a ratio of width somehow
     margin: var(--card-margin);
     border-radius: 10px;
@@ -229,8 +229,4 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
     width: 100%;
     background-color: black;
   }
-}
-
-.return-link {
-  margin: 50px;
 }
