@@ -18,10 +18,13 @@ capybara because more time to setup
 
 zoom, airbnb marker, google api
 
+recaptcha
+
 in the future:
 - would use cancan gem to control authorization, easier to define in one spot rather than putting if statements all over the place, wasn't too bad this time as small and quick app, but in a real project this would become hard to maintain very fast
+- do capybara closer to the start, and figure out how to do factory for models with related models
 
 sanitized inputs
 
-didn't use framework coz:
+didn't use css framework coz:
 reasons TBA
