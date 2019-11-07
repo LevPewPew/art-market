@@ -4,7 +4,7 @@
   <% end %>
 <% end %>
 
-<div class="cards-container">
+<section class="cards-container">
   <% @listings.each do |listing| %>
     <%= link_to listing, class: 'card' do %>
       <div class="image">
@@ -19,6 +19,6 @@
       </div>
     <% end %>
   <% end %>
-</div>
+</section>
 
 <%= paginate @listings %>

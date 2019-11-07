@@ -91,9 +91,22 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
     .section-1 {
       display: flex;
       justify-content: space-between;
+      height: calc(100% - 50px);
     }
 
     .section-2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .section-3 {
+      margin-left: 5px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-4 {
       margin-right: 5px;
       display: flex;
       flex-direction: column;
@@ -105,12 +118,6 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
       }
     }
     
-    .section-3 {
-      margin-left: 5px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
 
     .user, .listed-on {
       color: gray;
