@@ -11,9 +11,11 @@
           <em>by <%= @listing.artist %></em>
           <div class="styles">
             <% @listing.listings_styles.each do |listing_style| %>
-              <div class="style">
-                # <%= listing_style.style.name.gsub(' ', '-') unless listing_style.style.name.downcase == 'none' %>
-              </div>
+              <% if listing_style.style.name.downcase != 'none' %>
+                <div class="style">
+                  # <%= listing_style.style.name.gsub(' ', '-') %>
+                </div> 
+              <% end %>
             <% end %>
           </div>
           <div class="description">

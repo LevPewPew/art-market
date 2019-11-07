@@ -8,7 +8,11 @@
   <% @listings.each do |listing| %>
     <%= link_to listing, class: 'card' do %>
       <div class="image">
-        <%= image_tag listing.picture %>
+        <% if listing.picture.attached? %>
+          <%= image_tag listing.picture %>
+        <% else %>
+          <%= image_tag 'missing-image' %>
+        <% end %>
       </div>
       <div class="info">
         <h3><%= listing.title.slice(0...-1) %></h3>
