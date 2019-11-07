@@ -18,7 +18,8 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
     display: grid;
     grid-template-rows: 75% auto;
     grid-template-columns: auto;
-
+    text-decoration: none;
+    
     &:nth-of-type(5n + 1) {
       background: palevioletred;
     }
@@ -64,8 +65,10 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
 }
 
 .pagination {
+  margin: 20px 0px;
   font-size: 18px;
   font-weight: lighter;
+  text-align: center;
 
   a:visited {
     color: black;
@@ -92,7 +95,6 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
     justify-content: center;
     align-items: center;
   }
-
 }
 
 #map {
