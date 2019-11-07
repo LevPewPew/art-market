@@ -53,11 +53,8 @@
   </div>
 </div>
 
-
-<hr>
-
 <p>
-  <strong>Discussion:</strong>
+  <h3>Discussion:</h3>
   <br>
   <%# need to ensure order by id otherwise when a comms_mngr edits, rails sends the edited to end of the array, but we want to preserve by original post order %>
   <% @listing.comments.order('id').each do |comment| %>

@@ -296,7 +296,7 @@ TOTAL_USERS.times do |n|
     rand(0..5).times do
       Comment.create(
         # a pretentious word is inserted here to pass the custom validator
-        body: Faker::Lorem.paragraph(sentence_count: rand(1..3)) + "Humanity." + Faker::Lorem.paragraph(sentence_count: rand(1..3)),
+        body: Faker::Lorem.paragraph(sentence_count: rand(1..3)) + "The humanity." + Faker::Lorem.paragraph(sentence_count: rand(1..3)),
         listing_id: listing.id,
         user_id: rand(1..TOTAL_USERS)
       )
@@ -315,7 +315,7 @@ loop do
     break
   end
 end
-rand(1..Listing.count / 2).times do
+rand((Listing.count / 4)..(Listing.count / 2)).times do
   Purchase.create(
     listing_id: listing_id,
     user_id: user_id
