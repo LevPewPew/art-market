@@ -2,6 +2,8 @@
   --card-margin: 10px;
 }
 
+$a-tags: 'a:link, a:visited, a:hover, a:active';
+
 .cards-container {
   margin: 8px;
   display: flex;
@@ -58,6 +60,19 @@
         justify-content: space-between;
       }
     }
+  }
+}
+
+.pagination {
+  font-size: 18px;
+  font-weight: lighter;
+
+  a:visited {
+    color: black;
+  }
+
+  a:hover {
+    background: white;
   }
 }
 

@@ -1,3 +1,5 @@
+$a-tags: 'a:link, a:visited, a:hover, a:active';
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -6,14 +8,19 @@
   a {
     padding: 15px;
     border-radius: 5px;
-    border: 1px solid white;
+    font-size: 18px;
+    font-weight: lighter;
 
     &:hover {
       border: 1px solid lightcoral;
       background: white;
     }
   }
-  
+
+  #{$a-tags} {
+    text-decoration: none;
+    color: black;
+  }
   
   .top-links {
     margin: 10px 0px;
@@ -24,7 +31,7 @@
     .left-links {
       display: flex;
       align-items: center;
-      
+
       .company-name {
         transition: transform 0.5s;
 
@@ -33,11 +40,12 @@
         }
 
         a {
-          font-size: 36px;
+          padding: 0px 15px;
+          font-size: 48px;
           font-weight: bold;
-    
+
           &:hover {
-            border: 1px solid white;
+            border: red;
           }
         }
       }
