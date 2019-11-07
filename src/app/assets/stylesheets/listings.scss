@@ -88,12 +88,25 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
     grid-row: 1 / 2;
     grid-column: 1 / 2;
 
-    .artist-price-user-listed-on {
+    .section-1 {
       display: flex;
       justify-content: space-between;
     }
 
-    .price-user-listed-on {
+    .section-2 {
+      margin-right: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+      .description {
+        font-size: 16px;
+        font-weight: lighter;
+      }
+    }
+    
+    .section-3 {
+      margin-left: 5px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -108,7 +121,7 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
       justify-content: left;
 
       .style {
-        margin: 5px 5px 5px 0px;
+        margin: 10px 5px 10px 0px;
         border-radius: 5px;
         padding: 5px;
         background: rgba(72, 209, 205, 0.5);
@@ -120,6 +133,14 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
   .image {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
+    margin: 60px 0px;
+    border: 40px solid rgb(216, 197, 133);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+    
+    img {
+      width: 100%;
+      box-shadow: 0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+    }
   }
 }
 

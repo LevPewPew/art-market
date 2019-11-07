@@ -15,9 +15,21 @@
     <div class="title">
       <h2><%= @listing.title %></h3>
     </div>
-    <div class="artist-price-user-listed-on">
-      <em>by <%= @listing.artist %></em>
-      <div class="price-user-listed-on">
+    <div class="section-1">
+      <div class="section-2">
+        <em>by <%= @listing.artist %></em>
+        <div class="styles">
+          <% @listing.listings_styles.each do |listing_style| %>
+            <div class="style">
+              # <%= listing_style.style.name.gsub(' ', '-') unless listing_style.style.name.downcase == 'none' %>
+            </div>
+          <% end %>
+        </div>
+        <div class="description">
+          <%= @listing.description %>
+        </div>
+      </div>
+      <div class="section-3">
         $<%= number_with_delimiter(@listing.price, delimiter: ',') %>
         <div class="user">
           Owner: <%= @listing.user.user_detail.name %>
@@ -27,16 +39,6 @@
         </div>
       </div>
     </div>
-    <div class="styles">
-      <% @listing.listings_styles.each do |listing_style| %>
-        <div class="style">
-          # <%= listing_style.style.name.gsub(' ', '-') unless listing_style.style.name.downcase == 'none' %>
-        </div>
-      <% end %>
-    </div>
-    <div class="description">
-      <%= @listing.description %>
-    </div>
     <% if !current_user.nil? && (current_user.id == @listing.user_id || current_user.user_detail.super_user) %>
       <td><%= link_to 'Edit', edit_listing_path(@listing) %></td>
       <td><%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -44,9 +46,9 @@
   </div>
   <div class="image">
     <% if @listing.picture.attached? %>
-      <%= image_tag @listing.picture, width: "300px" %>
+      <%= image_tag @listing.picture %>
     <% else %>
-      <%= image_tag 'missing-image', width: "300px"%>
+      <%= image_tag 'missing-image' %>
     <% end %>
   </div>
 </div>
