@@ -1,5 +1,6 @@
 :root {
   --card-margin: 10px;
+  --off-black: rgb(39, 39, 39);
 }
 
 $a-tags: 'a:link, a:visited, a:hover, a:active';
@@ -164,42 +165,53 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
 }
 
 .comments-container {
-  margin: auto;
   width: 50%;
+  margin: auto;
   display: flex;
   flex-direction: column;
+
+  h3, h4 {
+    margin-left: 10px;
+  }
 
   .comment-container {
     display: flex;
     flex-direction: column;
+    margin: 5px;
     border-radius: 5px;
 
+    .user-name {
+      margin: 5px;
+      font-size: 14px;
+      font-weight: bolder;
+    }
+    
+    .body {
+      margin: 5px;
+      font-size: 14px;
+    }
+
+
     &:nth-of-type(2n + 1) {
-      background: black;
+      background: var(--off-black);
 
       .user-name {
-        margin: 5px;
-        font-weight: bolder;
-        color: white;
+        color: floralwhite;
       }
       
       .body {
-        margin: 5px;
-        color: white;
+        color: floralwhite;
       }
     }
     &:nth-of-type(2n + 2) {
-      background: white;
+      background: floralwhite;
       
       .user-name {
-        margin: 5px;
-        font-weight: bolder;
-        color: black;
+        color: var(--off-black);
       }
       
       .body {
-        margin: 5px;
-        color: black;
+        color: var(--off-black);
       }
     }
   }

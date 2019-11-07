@@ -100,15 +100,14 @@
       <% end %>
     </div>
   <% end %>
+  <h4>Discuss this Piece</h4>
+  <% if current_user.nil? %>
+    <%= link_to "Sign In to Comment!", new_user_session_path %>
+  <% else %>
+    <%= render 'comments/form' %>
+  <% end %>
 </section>
 
-<strong>Discuss this Piece</strong>
-<% if current_user.nil? %>
-  <br>
-  <%= link_to "Sign In to Comment!", new_user_session_path %>
-<% else %>
-  <%= render 'comments/form' %>
-<% end %>
 
 <hr>
 

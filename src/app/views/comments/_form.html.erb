@@ -8,8 +8,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class: "text-area" %>
   </div>
 
   <%= form.hidden_field(:listing_id, value: @listing.id) %>
