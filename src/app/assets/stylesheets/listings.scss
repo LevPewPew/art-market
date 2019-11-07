@@ -164,26 +164,43 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
 }
 
 .comments-container {
-  margin: 50px;
+  margin: auto;
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
   .comment-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+
     &:nth-of-type(2n + 1) {
-      border-radius: 5px;
       background: black;
-      color: white;
+
+      .user-name {
+        margin: 5px;
+        font-weight: bolder;
+        color: white;
+      }
+      
+      .body {
+        margin: 5px;
+        color: white;
+      }
     }
     &:nth-of-type(2n + 2) {
-      border-radius: 5px;
       background: white;
-      color: black;
-    }
-
-    .comment {
-      margin: 5px;
+      
+      .user-name {
+        margin: 5px;
+        font-weight: bolder;
+        color: black;
+      }
+      
+      .body {
+        margin: 5px;
+        color: black;
+      }
     }
   }
 }

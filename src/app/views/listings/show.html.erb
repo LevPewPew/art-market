@@ -85,15 +85,19 @@
   <%# need to ensure order by id otherwise when a comms_mngr edits, rails sends the edited to end of the array, but we want to preserve by original post order %>
   <% @listing.comments.order('id').each do |comment| %>
     <div class="comment-container">
-      <div class="comment">
-        <strong><%= comment.user.user_detail.name %></strong>
+      <div class="user-name">
+        <%= comment.user.user_detail.name %>
       </div>
-      <%= comment.body %>
-        <% if !current_user.nil? && (current_user.id == comment.user_id || current_user.user_detail.super_user || current_user.user_detail.comms_mngr) %>
-          <%# need to specify explicitly what params get what values when doing a nested form like this %>
+      <div class="body">
+        <%= comment.body %>
+      </div>
+      <% if !current_user.nil? && (current_user.id == comment.user_id || current_user.user_detail.super_user || current_user.user_detail.comms_mngr) %>
+        <%# need to specify explicitly what params get what values when doing a nested form like this %>
+        <div class="crud">
           <%= link_to 'Edit', edit_listing_comment_path(listing_id: @listing.id, id: comment.id) %>
           <%= link_to 'Destroy', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </section>
