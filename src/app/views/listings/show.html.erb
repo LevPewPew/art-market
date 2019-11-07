@@ -81,13 +81,12 @@
 </section>
 
 <section class="comments-container">
-  <h3>Discussion:</h3>
+  <h3>Discussion</h3>
   <%# need to ensure order by id otherwise when a comms_mngr edits, rails sends the edited to end of the array, but we want to preserve by original post order %>
   <% @listing.comments.order('id').each do |comment| %>
-    <div>
-      <div>
-        <em><%= comment.user.user_detail.name %></em>
-        <em><%= comment.created_at %></em>
+    <div class="comment-container">
+      <div class="comment">
+        <strong><%= comment.user.user_detail.name %></strong>
       </div>
       <%= comment.body %>
         <% if !current_user.nil? && (current_user.id == comment.user_id || current_user.user_detail.super_user || current_user.user_detail.comms_mngr) %>

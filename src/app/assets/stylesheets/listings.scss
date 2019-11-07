@@ -80,6 +80,7 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
 }
 
 .listing-container {
+  margin: 50px;
   display: grid;
   grid-template-rows: 1;
   grid-template-columns: 50% 50%;
@@ -98,6 +99,17 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
+      .purchase {
+        button {
+          width: 100%;
+          height: 50px;
+          border-radius: 5px;
+          background: black;
+          font-size: 18px;
+          color: white;
+        }
+      }
     }
 
     .section-3 {
@@ -140,13 +152,38 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
   .image {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
-    margin: 60px 0px;
+    // margin: 60px 0px;
     border: 40px solid rgb(216, 197, 133);
     box-shadow: 0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
     
     img {
       width: 100%;
       box-shadow: 0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+    }
+  }
+}
+
+.comments-container {
+  margin: 50px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .comment-container {
+    &:nth-of-type(2n + 1) {
+      border-radius: 5px;
+      background: black;
+      color: white;
+    }
+    &:nth-of-type(2n + 2) {
+      border-radius: 5px;
+      background: white;
+      color: black;
+    }
+
+    .comment {
+      margin: 5px;
     }
   }
 }

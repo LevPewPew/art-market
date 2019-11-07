@@ -280,7 +280,7 @@ TOTAL_USERS.times do |n|
     Listing.create(
       title: Faker::Lorem.sentence(word_count: rand(1..4)),
       artist: "#{Faker::Name.first_name} #{Faker::Name.last_name}",price: rand(1..100000),
-      description: Faker::Lorem.paragraph(sentence_count: rand(3..6)),
+      description: Faker::Lorem.paragraph(sentence_count: rand(6..18)),
       user_id: user.id
     )
     listing = Listing.last
