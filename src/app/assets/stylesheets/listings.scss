@@ -91,9 +91,10 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
     grid-column: 1 / 2;
 
     .section-1 {
+      height: calc(100% - 50px);
+      margin-right: 20px;
       display: flex;
       justify-content: space-between;
-      height: calc(100% - 50px);
     }
 
     .section-2 {
@@ -118,6 +119,7 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
     }
 
     .section-3 {
+      min-width: calc(100% / 4);
       margin-left: 5px;
       display: flex;
       flex-direction: column;
@@ -157,13 +159,34 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
   .image {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
-    // margin: 60px 0px;
+    margin-left: 20px;
     border: 40px solid rgb(216, 197, 133);
     box-shadow: 0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
     
     img {
       width: 100%;
       box-shadow: 0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+    }
+  }
+
+  .crud {
+    a {
+      margin: 5px;
+      padding: 5px;
+      border: 1px solid rgba(0,0,0,0);
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: lighter;
+    
+      &:hover {
+        border: 1px solid lightcoral;
+        background: white;
+      }
+    
+      &:link, &:visited, &:hover, &:active {
+        text-decoration: none;
+        color: black;
+      }
     }
   }
 }
@@ -185,16 +208,30 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
     flex-direction: column;
     
     .user-name {
-      margin: 5px;
+      margin: 10px 10px 5px 10px;
       font-size: 14px;
       font-weight: bolder;
     }
     
     .body {
-      margin: 5px;
+      margin: 5px 10px 10px 10px;
       font-size: 14px;
+      white-space: pre-line;;
     }
-    
+
+    .crud {
+      margin: 0px 5px 5px 0px;
+      
+      a {
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid rgba(0,0,0,0);
+        border-radius: 5px;
+        float: right;
+        font-size: 12px;
+        font-weight: lighter;
+      }
+    }
     
     &:nth-of-type(2n + 1) {
       background: var(--off-black);
@@ -206,6 +243,21 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
       .body {
         color: floralwhite;
       }
+      
+      .crud {
+        a {
+          color: floralwhite;
+
+          &:hover {
+            border: 1px solid lightcoral;
+            background: var(--off-black);
+          }
+        
+          &:link, &:visited, &:hover, &:active {
+            text-decoration: none;
+          }
+        }
+      }
     }
     &:nth-of-type(2n + 2) {
       background: floralwhite;
@@ -216,6 +268,21 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
       
       .body {
         color: var(--off-black);
+      }
+      
+      .crud {
+        a {
+          color: var(--off-black);
+
+          &:hover {
+            border: 1px solid lightcoral;
+            background: floralwhite;
+          }
+        
+          &:link, &:visited, &:hover, &:active {
+            text-decoration: none;
+          }
+        }
       }
     }
   }

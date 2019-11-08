@@ -24,7 +24,7 @@
         </div>
         <div class="purchase">
           <% if current_user.nil? %>
-            <%= link_to "Sign In to Purchase!", new_user_session_path %>
+            <%= link_to "Sign In to Purchase!", new_user_session_path, class: "generic-button" %>
           <% else %>
             <% if !@listing.purchase && @listing.user.id != current_user.id %>
               <button data-stripe="payment">Purchase</button>
@@ -47,6 +47,12 @@
             <% end %>
           <% end %>
         </div>
+        <div class="crud">
+          <% if !current_user.nil? && (current_user.id == @listing.user_id || current_user.user_detail.super_user) %>
+            <%= link_to 'Edit', edit_listing_path(@listing) %>
+            <%= link_to 'Delete', @listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
       </div>
       <div class="section-3">
         $<%= number_with_delimiter(@listing.price, delimiter: ',') %>
@@ -58,10 +64,6 @@
         </div>
       </div>
     </div>
-    <% if !current_user.nil? && (current_user.id == @listing.user_id || current_user.user_detail.super_user) %>
-      <td><%= link_to 'Edit', edit_listing_path(@listing) %></td>
-      <td><%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
   </div>
   <div class="image">
     <% if @listing.picture.attached? %>
@@ -87,14 +89,14 @@
         <%# need to specify explicitly what params get what values when doing a nested form like this %>
         <div class="crud">
           <%= link_to 'Edit', edit_listing_comment_path(listing_id: @listing.id, id: comment.id) %>
-          <%= link_to 'Destroy', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Delete', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       <% end %>
     </div>
   <% end %>
   <h4>Discuss this Piece</h4>
   <% if current_user.nil? %>
-    <%= link_to "Sign In to Comment!", new_user_session_path %>
+    <%= link_to "Sign In to Comment!", new_user_session_path, class: "generic-button" %>
   <% else %>
     <%= render 'comments/form' %>
   <% end %>

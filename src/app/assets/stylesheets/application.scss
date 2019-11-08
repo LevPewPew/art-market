@@ -33,10 +33,30 @@ h1 {
   background:rgba(244,244,244,0.01);
 }
 
+.generic-button {
+  display: inline-block;
+  margin-right: auto;
+  padding: 15px;
+  border: 1px solid rgb(240, 200, 200);
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: lighter;
+
+  &:hover {
+    border: 1px solid lightcoral;
+    background: white;
+  }
+
+  &:link, &:visited, &:hover, &:active {
+    text-decoration: none;
+    color: black;
+  }
+}
+
 .return-link {
   margin: 50px;
   padding: 15px;
-  border: 1px solid rgba(0,0,0,0);
+  border: 1px solid rgb(240, 200, 200);
   border-radius: 5px;
   font-size: 18px;
   font-weight: lighter;
