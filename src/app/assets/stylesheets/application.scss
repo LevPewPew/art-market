@@ -151,13 +151,17 @@ h1 {
       resize: none;
       font-size: 18px;
       white-space: pre-wrap;
+
+      &:focus {
+        outline: 5px solid black;
+      }
     }
   }
 
   // upload button styling looks funny because i have to override the browsers styling by covering what it creates up and then putting my own button on top of it. http://geniuscarrier.com/how-to-style-a-html-file-upload-button-in-pure-css/
   // NOTE: i couldn't fix the "fakepath" display bug
   .upload-file-container {
-    margin: 0px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
 
@@ -183,7 +187,7 @@ h1 {
       display: inline-block;
       margin-left: 5px;
       padding: 15px;
-      border: 1px solid rgb(240, 200, 200);
+      border: 1px solid rgb(201, 200, 240);
       border-radius: 5px;
       font-size: 18px;
       font-weight: lighter;
