@@ -24,6 +24,10 @@ h1 {
   margin: 18px;
 }
 
+.h1--form {
+  margin: 50px;
+}
+
 .search-bar {
   margin: 18px;
   width: calc(100% - 36px);
@@ -69,5 +73,46 @@ h1 {
   &:link, &:visited, &:hover, &:active {
     text-decoration: none;
     color: black;
+  }
+}
+
+.form-container {
+  margin: 50px;
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 50% 50%;
+  
+  label {
+    margin-bottom: 5px;
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  .field {
+    label {
+      margin-bottom: 5px;
+      margin-top: 20px;
+      font-size: 24px;
+    }
+    
+    input, select {
+      width: calc(100% - 24px);
+      margin: 5px 0px;
+      border: 1px solid black;
+      border-radius: 5px;
+      font-size: 24px;
+      background: white;
+    }
+    
+    .text-area {
+      width: calc(100% - 24px);
+      height: 200px;
+      margin: 5px;
+      border: 1px solid black;
+      border-radius: 5px;
+      resize: none;
+      font-size: 18px;
+      white-space: pre-wrap;
+    }
   }
 }

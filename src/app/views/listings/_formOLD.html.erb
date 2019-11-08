@@ -1,0 +1,56 @@
+<%= form_with(model: listing, local: true) do |form| %>
+  <% if listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :artist %>
+    <%= form.text_field :artist %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="related-form">
+    <%= form.fields_for :listings_styles do |listings_styles_form| %>
+      <div class="field">
+        <%= listings_styles_form.label :style_id %>
+        <%= listings_styles_form.select :style_id, options_for_select( Style.all.collect { |u| [u.name, u.id] }, selected: @listing.listings_styles[listings_styles_form.options[:child_index]].style_id ) %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :picture %>
+    <%= form.file_field :picture, accept: 'image/png, image/gif, image/jpeg, image/jpg' %>
+  </div>
+
+  <%# only ask for reCAPTCHA on deployed environment, there aren't seperate keys so solve this problem as doing it this way also means unit tests don't fail due to actually being robots %>
+  <% if request.base_url != 'http://localhost:3000' %>
+    <%= recaptcha_tags %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
