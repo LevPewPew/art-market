@@ -47,12 +47,12 @@
             <% end %>
           <% end %>
         </div>
-        <div class="crud">
-          <% if !current_user.nil? && (current_user.id == @listing.user_id || current_user.user_detail.super_user) %>
+        <% if !current_user.nil? && (current_user.id == @listing.user_id || current_user.user_detail.super_user) %>
+          <div class="crud">
             <%= link_to 'Edit', edit_listing_path(@listing) %>
             <%= link_to 'Delete', @listing, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
       <div class="section-3">
         $<%= number_with_delimiter(@listing.price, delimiter: ',') %>
