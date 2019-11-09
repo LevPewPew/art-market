@@ -102,10 +102,11 @@ h1 {
   display: grid;
   grid-template-rows: 1;
   grid-template-columns: 50% 50%;
-
-  .section-1 {
-  }
   
+  .super-label {
+    font-size: 32px;
+  }
+
   .section-2 {
     padding-left: 24px;
     display: flex;
@@ -155,6 +156,14 @@ h1 {
       &:focus {
         outline: 5px solid black;
       }
+    }
+  }
+
+  .priviliges {
+    margin-bottom: 20px;
+
+    .priv-field {
+      height: auto;
     }
   }
 
