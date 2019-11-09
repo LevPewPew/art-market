@@ -1,8 +1,25 @@
-<TODO contents page>
-
-
-
 # Levente Toth - T2A2 - Art Haus
+
+## Contents
+
+- [App Description](#app-description)
+  - [Functionality and Features](#functionality-and-features)
+  - [Future Developments](#future-developments)
+  - [Sitemap](#sitemap)
+  - [Example Screenshots](#example-screenshots)
+- [User Stories](#user-stories)
+- [Wireframes](#wireframes)
+- [ERD, Schema, Models and Database Relations](#erd-schema-models-and-database-relations)
+  - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
+  - [Schema](#schema)
+  - [Models and Database Relations](#models-and-database-relations)
+    - [Model and Relationship Design](#model-and-relationship-design)
+    - [Schema Design](#schema-design)
+- [High Level Components](#high-level-components)
+- [Third Party Services](#third-party-services)
+- [Task and Project Management](#task-and-project-management)
+
+## App Description
 
 Artists are often limited by the decisions of art dealers, and galleries. Due to the constraints of finite space and time, as well as the desire for profit, dealers and galleries limit artist exposure, reach and profits.
 
@@ -10,13 +27,11 @@ Making it harder for artists to create and display their work through the above 
 
 The 2-way marketplace web application *Art Haus* has been created as a tool to help, by removing the middle man (art galleries or exclusive dealers) and connecting artists and art collectors directly to other collectors and admirers of art.
 
-The target audience is artists and those who appreciate art.
+The target audience is Australian artists and Australians who appreciate art.
 
 View the live website for Art Haus [here](https://enigmatic-mountain-10943.herokuapp.com/).
 
 View the source code and version control repository [here](https://github.com/LevPewPew/art-market).
-
-## App Description
 
 The following tech stack and plug-ins/services were used to achieve what is outlined below:
 
@@ -59,6 +74,8 @@ Some functionality and features for the future I would have liked to include but
   - Better and more comprehensive Functional Tests. I ran into difficulties creating objects using Factory Bot in Capybara to create dummy data when creating Objects that use related models. So instead I had to create them "live" by having the test scripts go through User and Listing instantiation by filling in forms on the website, this adds a lot of overhead to the tests in code as well as time to execute.
   - Change Purchases entities to be a duplicate of a Listing entity, rather than a join table to link Users that purchased to Listing they purchased. This is to allow a Users purchase history to not be have missing entires when the Seller of a Listing they purchased has their account deleted which deletes the related Listings. Originally I did this as join table as I thought I shouldn't create more data than I need to, not considering this limitation that would result from it.
   - On slower connections, it can take a while to render a Listing index due to all the images not being scaled down to a smaller file size appropriate to the displayed dimensions of the images. In the future I would account for this by following [this guide](https://aws.amazon.com/blogs/compute/resize-images-on-the-fly-with-amazon-s3-aws-lambda-and-amazon-api-gateway/).
+  - Notifications, both in app and via email using a service such as Mailgun
+  - Support for non-Australian users.
 
 ### Sitemap
 
@@ -148,38 +165,52 @@ Due to many models referencing others, and SQL/Postgress enforcing relational in
 
 All Primary Keys and Foreign Keys have the *bigint* data types. This is because an integer would not have enough bits to represent larger numbers, larger numbers are necessary for Primary Keys as each new table record that is created must be unique and never repeats, even when a smaller Primary Key doesn't exist due to an earlier record's destruction.
 
+Most other parameters for things like names, titles, address lines etc have been set to be string datatype. Exceptions being the description, body and bio of the Listing, Comment and UserDetail models respectively. This is because these parameters can and often have a lot written in them and as such need the extra memory space provided by the text data type over the string data type.
 
+The Listing price parameter is an integer obviously as price is a number, so any sort of calculations such as a applying a discount code or tracking total spent/earned will be easier when using an integer data type.
 
+The Address postcode parameter is not an integer but instead a string as it is hard to deal with the possibility of leading zeros with a integer.
 
+The Address state parameter is an integer as this has been defined by an enum. An enum was chosen since the states of a country typically don't change often enough to be defined by a model in any way. Enums allow a database to have the speed an efficiency of an integer but with the flexibility of a string.
+
+In the UserDetail model, super_user and comms_mngr parameters are stored as booleans, because they either are have this role, or they don't. In hindsight I would have made this an enum also so I don't have to add more parameters any time a new role is created, and to avoid having parameters that are almost always nil.
 
 ## High Level Components
 
-TODO
+*Active Record:* In Ruby on Rails, Active Record is the abstraction used to define the Model as part of the MVC software design pattern. Active Record facilitates creating, selecting, updating and destroying Object records in a database table. It is an Object Relational Mapping system ORMs allow a developer to create SQL queries in the style of an object oriented language.
 
-* Explain the different high-level components (abstractions) in your App: is talk about active record and how SQL is abstracted to helpers. form helpers, active storage, devise, stripe, etc. mention active record is an ORM
+*Active Storage:* In Ruby on Rails, Active Store is an abstraction that allows a developer to implement file storage easily. Through Active Storage, the developer can have file attachments sent to a web app be automatically stored either in a local disk or in some sort of cloud storage service such as Amazon Web Services S3.
+
+*Form Helpers:* Ruby on Rails has form helpers that can be called by the form_with method in a view file. These helpers simplify the process of creating forms, as rather than creating them in plain HTML, many steps and parameters that are normally needed to be defined and linked to each other via classes, id's and routes etc are done for you, based on some assumptions of common practices and use cases.
+
+*Devise Package*: To implement a User Authentication and Authorization system, the Devise gem was used. This allowed the easy creation of sign in and sign up forms. As well as helpers to use as before_actions to ensure only authenticated users can access certain controller actions.
+
+## Third Party Services
+
+*Stripe:* Used as a payment processor. Using a webhook to deliver data from the Art Haus web app to the Stripe servers, the Stripe service will accept payments pointing to it and move funds from a Users credit/debit card to the Stripe account. It will also keeping track of all these transactions for future reference.
+
+*Amazon Web Services (AWS) S3:* AWS S3 is a cloud storage service. It allows the Art Haus web app to safely store files uploaded by users as attachments when making a listing. Without this cloud storage service, the web app would have to store uploaded files locally on it's server and this would be in danger of losing all these files.
+
+*Google Maps API:* To represent the location of a Listing via a GPS map, the Google Maps API has been used to drop a marker on the location for a potential buyer to easily view to get a quick idea of how close or far a Listing is from them.
+
+*Google reCAPTCHA API:* To prevent spam and automated Listings being generated a reCAPTCHA has been placed in the New Listing view. This reCAPTCHA is like a quick test that is easy for a human to pass, but difficult for a bot, reCAPTCHA will be able to determine if the User is a human or a bot and block any bots from creating a new Listing.
 
 ## Task and Project Management
 
-TODO trello and a brief discussion overview about how i used it and managed my time and my process e.g. erd and wireframes then side leave validtions last, and CSS at very end pump out models first, etc.
+A Trello Boards was the primary tool used to plan tasks and track progress in my project.
 
+![Trello 1](./docs/T2A2-trello-1.png)
 
+![Trello 2](./docs/T2A2-trello-2.png)
 
+![Trello 3](./docs/T2A2-trello-3.png)
 
+The general process I followed for this project was as follows:
 
-
-<TODO all this stuff once app is complete>
-
-## R15	Explain the different high-level components (abstractions) in your app
-* R16	Detail any third party services that your app will use
-* R17	Describe your projects models in terms of the relationships (active record associations) they have with each other
-* R18	Discuss the database relations to be implemented in your application
-* R19	Provide your database schema design, basically tack onto ERDs info about nullable and defaults, talk about the types etc. talk abouy why you used certain types. example why postfcode is string, to have leading zeros.
-* R20	Describe the way tasks are allocated and tracked in your project
-
-rubrick
-* Describe the way tasks are planned and tracked in your project (Shows significant planning for how tasks are planned and tracked, including a full description of the process and of the tools used)
-* Explain the different high-level components (abstractions) in your App: is talk about active record and how SQL is abstracted to helpers. form helpers, active storage, devise, stripe, etc. mention active record is an ORM
-* sanitziation is allowing permitted paramaters, form validation, and formatting values a user may enter for the database to use.
-  - Sanitizing will remove any illegal character from the data.
-  - Validating will determine if the data is in proper form.
-* user stories follow this structure: as a <something> i can do <something> to achieve <something> https://www.atlassian.com/agile/project-management/user-stories
+1. Create a Trello board with high level tasks to create an MVP and cover all assignment requirements.
+2. Create Wireframes to use as a guide to follow when creating my Views and Styling the website. 
+3. Create an ERD to use as a guide to follow when coding my models and schema.
+4. Generate models in rails including all references.
+5. Create a Seed file that to fill the database with dummy data for testing.
+6. Create Views and link them to the models with Controllers.
+7. Leave validations until last to avoid spending lots of time troubleshooting.
