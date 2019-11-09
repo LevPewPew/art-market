@@ -165,16 +165,16 @@ h1 {
     }
   }
 
-  .fields-style {
+  .related-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
-  .priviliges {
+  .fields-privileges {
     margin-bottom: 20px;
 
-    .priv-field {
+    .field {
       height: auto;
     }
   }

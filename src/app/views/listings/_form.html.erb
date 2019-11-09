@@ -31,11 +31,9 @@
       <label for="listing_listings_styles_attributes_0_style_id">Styles (Up to 3)</label>
       <div class="related-form">
         <%= form.fields_for :listings_styles do |listings_styles_form| %>
-          <div class="fields-style">
             <div class="field">
               <%= listings_styles_form.select :style_id, options_for_select( Style.all.collect { |u| [u.name, u.id] }, selected: @listing.listings_styles[listings_styles_form.options[:child_index]].style_id ) %>
             </div>
-          </div>
         <% end %>
       </div>
     </div>
