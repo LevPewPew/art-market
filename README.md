@@ -10,48 +10,62 @@
 * R19	Provide your database schema design
 * R20	Describe the way tasks are allocated and tracked in your project
 
-# Levente Toth - T2A2 - Art Market
-
-## The Problem
+# Levente Toth - T2A2 - Art Haus
 
 Artists are often limited by the decisions of art dealers, and galleries. Due to the constraints of finite space and time, as well as the desire for profit, dealers and galleries limit artist exposure, reach and profits.
 
-## Why Solve this Problem?
-
 Making it harder for artists to create and display their work through the above constraints means less art for the world. In an age approaching post-scarcity the human race needs more and more ways to ponder about themselves and their surroundings. More ways to find meaning, more ways to express themselves.
 
-## The Website
+The 2-way marketplace web application *Art Haus* has been created as a tool to help, by removing the middle man (art galleries or exclusive dealers) and connecting artists and art collectors directly to other collectors and admirers of art.
 
-<TODO deployed website link goes here>
+View the live website for Art Haus [here](https://enigmatic-mountain-10943.herokuapp.com/).
 
-## Source Control Repository
-
-[GitHub Repo](https://github.com/LevPewPew/art-market)
+View the source code and version control repository [here](https://github.com/LevPewPew/art-market).
 
 ## App Description
 
-### Purpose
+The following tech stack and plug-ins/services were used to achieve what is outlined below:
 
-Remove the middle man (art dealer or gallery) and connect buyers directly with artists.
+- HTML
+- CSS/SCSS
+- JavaScript
+- Ruby
+- Ruby on Rails
+- Stripe
+- AWS S3
+- Heroku
 
-### Functionality/Features
-- Database to track entities such as Users, Listings, etc
-- Create user accounts with authorization and authentication (using Devise plug-in)
-- Any User account can both buy and sell art
-- User can post a listing to app for potential buyers to view or purchase
-- User can browse art by
-  - Trending
-  - Artist
-  - Style
-  - Medium
-- User can purchase listed art
-- Payment Processing (using Stripe plug-in)
-- Cloud Storage (using Amazon Web Services S3)
-<TODO add more as theyre completed from beast mode or whatever>
+### Functionality and Features
+- Database to track entities such as Users, Listings, etc.
+- Create user accounts with authorization and authentication (using Devise package).
+- Any User account can both buy and sell art.
+  - User can post a Listing to app for potential buyers to view or purchase.
+  - User can browse art and use a search bar the look for specific artists.
+  - User can purchase listed art.
+- Payment Processing (using Stripe plug-in).
+- Cloud Storage (using Amazon Web Services S3 plug-in).
+- reCAPTCHA security to prevent spam or automated Listings from bots.
+- Functional testing suite, (using Capybara package).
+- GPS location with Google Maps API and approximate location indicator.
+- Admin User role, has authority to take CRUD actions on Object's not owned by them. Also has access to Admin Dashboard.
+- Admin Dashboard. Can view all users here and manage their account details. Can also view site statistics.
+- Communications Manager User role, has authority to edit or delete any Comments.
+
+### Future Developments
+
+Some functionality and features for the future I would have liked to include but didn't have enough time for are:
+
+  - Starred Listings, to bookmark them on a User's account.
+  - Sort by "Trending", i.e. listings with lot's of views and stars at the top.
+  - Direct Message communication between Buyers and Sellers.
+  - On Purchase of a Listing, change the approximate location marker on GPS to an exact one, and reveal the address of the Listing Owner to the Buyer.
+  - Use of the CanCan gem for User Account Authorization management. I decided to avoid using a package because I felt this site would be relatively small and simple given the time frame, but in hindsight even a site this small and simple would have benefited greatly from abstracting authorization to be managed in a central location as it became a bit messy and hard to track having authorization checks spread throughout all the views and controllers.
+  - Better and more comprehensive Functional Tests. I ran into difficulties creating objects using Factory Bot in Capybara to create dummy data when creating Objects that use related models. So instead I had to create them "live" by having the test scripts go through User and Listing instantiation by filling in forms on the website, this adds a lot of overhead to the tests in code as well as time to execute.
+  - Change Purchases entities to be a duplicate of a Listing entity, rather than a join table to link Users that purchased to Listing they purchased. This is to allow a Users purchase history to not be have missing entires when the Seller of a Listing they purchased has their account deleted which deletes the related Listings. Originally I did this as join table as I thought I shouldn't create more data than I need to, not considering this limitation that would result from it.
 
 ### Sitemap
 
-<TODO do once wireframes are made>
+![Site Map](./docs/T2A2-sitemap.png)
 
 ### Screenshots
 
@@ -63,13 +77,7 @@ Artists and those who appreciate art.
 
 ### Tech stack (e.g. html, css, deployment platform, etc)
 
-- HTML
-- CSS
-- Ruby
-- Ruby on Rails
-- Heroku
-- Stripe
-- AWS S3
+
 
 ## User Stories
 
