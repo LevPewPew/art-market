@@ -127,7 +127,7 @@ h1 {
   }
 
   .field {
-    height: calc(100% - 120px);
+    height: calc(100%);
     margin: 0px;
 
     label {
@@ -163,6 +163,12 @@ h1 {
         outline: 5px solid black;
       }
     }
+  }
+
+  .fields-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .priviliges {
