@@ -9,7 +9,7 @@ class Listing < ApplicationRecord
   
   validates :title, presence: true
   validates :artist, presence: true
-  validates :price, numericality: true
+  validates :price, numericality: {only_integer: true, greater_than: 0 }
   validates :description, presence: true
   # no attached/presence validator currently exists for active storage.
   # TODO write/paste a custom validator
