@@ -60,6 +60,7 @@ The following tech stack and plug-ins/services were used to achieve what is outl
 - Admin User role, has authority to take CRUD actions on Object's not owned by them. Also has access to Admin Dashboard.
 - Admin Dashboard. Can view all users here and manage their account details. Can also view site statistics.
 - Communications Manager User role, has authority to edit or delete any Comments.
+- A custom validator to ensure all Comments on a Listing cross a minimum threshold of pretentiousness.
 
 ### Future Developments
 
