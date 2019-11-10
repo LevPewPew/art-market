@@ -29,3 +29,16 @@
     font-size: 18px;
   }
 }
+
+.error-page-container {
+  height: 50vh;
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .message {
+    font-size: 72px;
+    line-height: 72px;
+  }
+}
