@@ -83,7 +83,7 @@ class ListingsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @listing.update(listing_params)
+      if @listing.update(listing_params) && (verify_recaptcha(model: @listing) || request.base_url == 'http://localhost:3000')
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else
