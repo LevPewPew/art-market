@@ -210,7 +210,7 @@ end
 
 def create_listing
   visit "/"
-  click_link "Listing New"
+  click_link "Submit a Piece of Art"
   fill_in "Title", with: "Cube Man and Cube Boy"
   fill_in "Artist", with: "Picasso"
   fill_in "Price", with: 123
@@ -228,7 +228,7 @@ RSpec.feature "Create a Listing" do
     create_styles
 
     visit "/"
-    click_link "Listing New"
+    click_link "Submit a Piece of Art"
     fill_in "Title", with: "Cube Man and Cube Boy"
     fill_in "Artist", with: "Picasso"
     fill_in "Price", with: 123
@@ -246,7 +246,7 @@ RSpec.feature "Create a Listing" do
     create_styles
 
     visit "/"
-    click_link "Listing New"
+    click_link "Submit a Piece of Art"
     fill_in "Title", with: ""
     fill_in "Artist", with: "Picasso"
     fill_in "Price", with: 123
@@ -255,6 +255,6 @@ RSpec.feature "Create a Listing" do
     select "Art Brut", from: "listing_listings_styles_attributes_1_style_id"
     select "Art Deco", from: "listing_listings_styles_attributes_2_style_id"
     click_button "Create Listing"
-    expect(page).to have_content("New Listing")
+    expect(page).to have_content("New Art Submission")
   end
 end

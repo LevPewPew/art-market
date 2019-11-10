@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def index
     @q = User.all.ransack(params[:q])
-    @users = @q.result(distinct: true).page(params[:page]).per(10)
+    @users = @q.result(distinct: true).page(params[:page]).per(25)
 
     # sanitize
     if current_user.nil? || !current_user.user_detail.super_user

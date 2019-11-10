@@ -1,0 +1,40 @@
+.users-container {
+  margin: 18px;
+
+  th, td {
+    font-size: 18px;
+  }
+
+  th {
+    height: 32px;
+  }
+
+  td {
+    height: 40px;
+  }
+
+  th.has-content {
+    border-bottom: 1px solid black;
+  }
+
+  .crud {
+    a {
+      margin: 2px;
+      padding: 5px;
+      border: 1px solid rgb(240, 200, 200);
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: lighter;
+    
+      &:hover {
+        border: 1px solid lightcoral;
+        background: white;
+      }
+    
+      &:link, &:visited, &:hover, &:active {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}

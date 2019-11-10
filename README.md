@@ -55,7 +55,7 @@ The following tech stack and plug-ins/services were used to achieve what is outl
 - Cloud Storage (using Amazon Web Services S3 plug-in).
 - reCAPTCHA security to prevent spam or automated Listings from bots.
 - Search bar (using Ransack package)
-- Functional testing suite, (using Capybara package).
+- Functional testing suite, (using Capybara package, use the command ```rspec spec/features``` in the project folder to run tests).
 - GPS location with Google Maps API and approximate location indicator.
 - Admin User role, has authority to take CRUD actions on Object's not owned by them. Also has access to Admin Dashboard.
 - Admin Dashboard. Can view all users here and manage their account details. Can also view site statistics.
