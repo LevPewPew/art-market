@@ -14,6 +14,8 @@
   - [Schema](#schema)
   - [Models and Database Relations](#models-and-database-relations)
     - [Model and Relationship Design](#model-and-relationship-design)
+      - [ActiveRecord Associations](#activerecord-associations)
+      - [Relational Integrity](#relational-integrity)
     - [Schema Design](#schema-design)
 - [High Level Components](#high-level-components)
 - [Third Party Services](#third-party-services)
@@ -66,17 +68,18 @@ The following tech stack and plug-ins/services were used to achieve what is outl
 
 Some functionality and features for the future I would have liked to include but didn't have enough time for are:
 
-  - Starred Listings, to bookmark them on a User's account.
-  - Sort by "Trending", i.e. listings with lot's of views and stars at the top.
-  - Search bar that searches for Listings with a certain Style, searching related models is an "advanced mode" feature of the Ransack gem that I didn't have time to implement.
-  - Direct Message communication between Buyers and Sellers.
-  - On Purchase of a Listing, change the approximate location marker on GPS to an exact one, and reveal the address of the Listing Owner to the Buyer.
-  - Use of the CanCan gem for User Account Authorization management. I decided to avoid using a package because I felt this site would be relatively small and simple given the time frame, but in hindsight even a site this small and simple would have benefited greatly from abstracting authorization to be managed in a central location as it became a bit messy and hard to track having authorization checks spread throughout all the views and controllers.
-  - Better and more comprehensive Functional Tests. I ran into difficulties creating objects using Factory Bot in Capybara to create dummy data when creating Objects that use related models. So instead I had to create them "live" by having the test scripts go through User and Listing instantiation by filling in forms on the website, this adds a lot of overhead to the tests in code as well as time to execute.
-  - Change Purchases entities to be a duplicate of a Listing entity, rather than a join table to link Users that purchased to Listing they purchased. This is to allow a Users purchase history to not be have missing entires when the Seller of a Listing they purchased has their account deleted which deletes the related Listings. Originally I did this as join table as I thought I shouldn't create more data than I need to, not considering this limitation that would result from it.
-  - On slower connections, it can take a while to render a Listing index due to all the images not being scaled down to a smaller file size appropriate to the displayed dimensions of the images. In the future I would account for this by following [this guide](https://aws.amazon.com/blogs/compute/resize-images-on-the-fly-with-amazon-s3-aws-lambda-and-amazon-api-gateway/).
-  - Notifications, both in app and via email using a service such as Mailgun
-  - Support for non-Australian users.
+- Starred Listings, to bookmark them on a User's account.
+- Sort by "Trending", i.e. listings with lot's of views and stars at the top.
+- Search bar that searches for Listings with a certain Style, searching related models is an "advanced mode" feature of the Ransack gem that I didn't have time to implement.
+- Direct Message communication between Buyers and Sellers.
+- On Purchase of a Listing, change the approximate location marker on GPS to an exact one, and reveal the address of the Listing Owner to the Buyer.
+- Use of the CanCan gem for User Account Authorization management. I decided to avoid using a package because I felt this site would be relatively small and simple given the time frame, but in hindsight even a site this small and simple would have benefited greatly from abstracting authorization to be managed in a central location as it became a bit messy and hard to track having authorization checks spread throughout all the views and controllers.
+- Better and more comprehensive Functional Tests. I ran into difficulties creating objects using Factory Bot in Capybara to create dummy data when creating Objects that use related models. So instead I had to create them "live" by having the test scripts go through User and Listing instantiation by filling in forms on the website, this adds a lot of overhead to the tests in code as well as time to execute.
+- Change Purchases entities to be a duplicate of a Listing entity, rather than a join table to link Users that purchased to Listing they purchased. This is to allow a Users purchase history to not be have missing entires when the Seller of a Listing they purchased has their account deleted which deletes the related Listings. Originally I did this as join table as I thought I shouldn't create more data than I need to, not considering this limitation that would result from it.
+- On slower connections, it can take a while to render a Listing index due to all the images not being scaled down to a smaller file size appropriate to the displayed dimensions of the images. In the future I would account for this by following [this guide](https://aws.amazon.com/blogs/compute/resize-images-on-the-fly-with-amazon-s3-aws-lambda-and-amazon-api-gateway/).
+- Notifications, both in app and via email using a service such as Mailgun.
+- Support for non-Australian users.
+- Responsiveness and design for mobile use.
 
 ### Sitemap
 
@@ -159,6 +162,14 @@ The Listing model has a *One to Many* relationship with the Comment model. Users
 And of course the Listing has a *Many to One* relationship with the User model via it's Foreign Key that references a User ID to allow a User to post several Listings at a time.
 
 Purchases are a type of join table to link Users to Listings whenever a User purchases a Listing. The Purchases table is two Foreign Keys, one to reference the purchased Listing and another to reference the User who purchased the Listing. In this way a User can view what Listings they have Purchased by doing a query on what Listings have both a Purchase referencing it and reference the User. Although a join table was used this is actually implemented as a *One and Only One to Zero or Many* relationship. This is because a User may have not purchased anything, or purchase one or many Listings, but a Listing has either been purchased or it has not.
+
+##### ActiveRecord Associations
+
+Some parameters and associations are not represented on the ERD as they are not explicitly defined in the schema for that table, or in the model.
+
+One such association is the *picture* parameter used for a file attachment field to send attached files on a new Listing to ActiveStorage, which in turn sends the file to an AWS S3 "bucket" for cloud storage.
+
+##### Relational Integrity
 
 Due to many models referencing others, and SQL/Postgress enforcing relational integrity, in my model I sometimes needed to account for this. Specifically I wanted to force the destruction of table record when a table record being referenced by it is destroyed, in order to allow certain functionality without destroying relational integrity. For example when a User is deleted, I want all the related UserDetail, Address, Listing, Comment and Purchase entities destroyed as well, which is achieved by putting a ```dependant: destroy``` option into the model. This is so that the ability to delete a user exists, but if the user is deleted, the related table entries are deleted along with it so that, for example, a Listing isn't left on the website to be purchased when the User that posted it no longer exists.
 

@@ -1,4 +1,16 @@
 <h1>Admin Dashboard</h1>
 
-<%= link_to 'View All Users', users_path %>
-<%= link_to 'View Site Stats', site_stats_path %>
+<section class="dash-nav-container">
+  <%= link_to(users_path, class: "generic-button") do %>
+    View All Users
+    <div class="icon">
+      <i class="fas fa-users-cog"></i>
+    </div>
+  <% end %>
+  <%= link_to(site_stats_path, class: "generic-button") do %>
+    View Site Stats
+    <div class="icon">
+      <i class="fas fa-chart-bar"></i>
+    </div>
+  <% end %>
+</section>

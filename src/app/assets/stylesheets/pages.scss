@@ -1,0 +1,16 @@
+.dash-nav-container {
+  margin: 18px;
+
+  .generic-button {
+      width: calc((100% / 3) - var(--card-margin) - 10px);
+      height: calc(300px - var(--card-margin)); //TODO try make this a ratio of width somehow
+      text-align: center;
+      font-size: 18px;
+      font-weight: lighter;
+      
+      .icon {
+        margin: 20px;
+        font-size: 196px;
+      }
+  }
+}
