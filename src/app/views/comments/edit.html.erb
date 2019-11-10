@@ -1,5 +1,8 @@
 <h1>Editing Comment</h1>
 
-<%= render 'comments/form' %>
+<section class="comments-container">
+  <%= render 'comments/form' %>
+</section>
 
-<%= link_to 'Cancel', @listing %>
+
+<%= link_to 'Cancel', @listing, class: "return-link" %>

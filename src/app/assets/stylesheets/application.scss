@@ -20,6 +20,33 @@
   color: black;
 }
 
+#notice {
+  margin: 18px;
+  padding: 10px;
+  display: inline-block;
+  font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  background: green;
+  color: white;
+}
+
+.flash-errors {
+  list-style-type: none;
+
+  .flash-error {
+    margin: 18px;
+    padding: 10px;
+    display: inline-block;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: lighter;
+    background: darkred;
+    color: white;
+  }
+}
+
+
 h1 {
   margin: 18px;
 }

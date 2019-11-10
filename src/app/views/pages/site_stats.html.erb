@@ -1,21 +1,25 @@
 <h1>Site Stats</h1>
 
-<p>
-  <strong>Total Users:</strong>
-  <%= @users.count %>
-</p>
+<section class="stats-container">
+  <div class="stat-container">
+    <strong>Total Users:</strong>
+    <%= @users.count %>
+  </div>
 
-<p>
-  <strong>Total Current Listings:</strong>
-  <%= @listings.count %>
-</p>
+  <div class="stat-container">
+    <strong>Total Current Listings:</strong>
+    <%= @listings.count %>
+  </div>
 
-<p>
-  <strong>Total Purchases:</strong>
-  <%= @purchases.count %>
-</p>
+  <div class="stat-container">
+    <strong>Total Purchases:</strong>
+    <%= @purchases.count %>
+  </div>
 
-<p>
-  <strong>Total Comments:</strong>
-  <%= @comments.count %>
-</p>
+  <div class="stat-container">
+    <strong>Total Comments:</strong>
+    <%= @comments.count %>
+  </div>
+</section>
+
+<%= link_to 'Return to Dashboard', admin_dashboard_path, class: "return-link" %>

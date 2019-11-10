@@ -3,10 +3,10 @@
       <div id="error_explanation">
         <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
-        <ul>
-        <% listing.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+        <ul class="flash-errors">
+          <% listing.errors.full_messages.each do |message| %>
+            <li><span class="flash-error"><%= message %></span></li>
+          <% end %>
         </ul>
       </div>
     <% end %>

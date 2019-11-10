@@ -1,16 +1,31 @@
 .dash-nav-container {
   margin: 18px;
-
+  
   .generic-button {
-      width: calc((100% / 3) - var(--card-margin) - 10px);
-      height: calc(300px - var(--card-margin)); //TODO try make this a ratio of width somehow
-      text-align: center;
-      font-size: 18px;
-      font-weight: lighter;
-      
-      .icon {
-        margin: 20px;
-        font-size: 196px;
-      }
+    width: calc((100% / 3) - var(--card-margin) - 10px);
+    height: calc(300px - var(--card-margin)); //TODO try make this a ratio of width somehow
+    text-align: center;
+    font-size: 18px;
+    font-weight: lighter;
+    
+    .icon {
+      margin: 20px;
+      font-size: 196px;
+    }
+  }
+}
+
+.stats-container {
+  margin: 18px;
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 40% 1fr 40%;
+  
+  .stat-container {
+    grid-column: 2 / 3;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
   }
 }

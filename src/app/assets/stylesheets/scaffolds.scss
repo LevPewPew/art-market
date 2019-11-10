@@ -50,15 +50,32 @@ div {
   color: green;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+.field {
+  .field_with_errors:nth-of-type(1) {
+    background: darkred;
+    border-radius: 5px 5px 0px 0px;
+    padding: 2px;
+    
+    label {
+      color: white;
+    }
+  }
+  .field_with_errors:nth-of-type(2) {
+    background: darkred;
+    border-radius: 0px 0px 5px 5px;
+    padding: 2px;
+    
+    label {
+      color: white;
+    }
+  }
 }
 
 #error_explanation {
+  margin: 50px;
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid darkred;
+  border-radius: 5px;
   padding: 7px 7px 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
@@ -69,7 +86,7 @@ div {
     padding: 5px 5px 5px 15px;
     font-size: 12px;
     margin: -7px -7px 0;
-    background-color: #c00;
+    background-color: darkred;
     color: #fff;
   }
 
