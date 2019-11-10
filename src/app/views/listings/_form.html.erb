@@ -55,9 +55,7 @@
       </div>
       <%# only ask for reCAPTCHA on deployed environment, there aren't seperate keys so solve this problem as doing it this way also means unit tests don't fail due to actually being robots %>
       <% if request.base_url != 'http://localhost:3000' %>
-        <div class="field">
-          <%= recaptcha_tags %>
-        </div>
+        <%= recaptcha_tags %>
       <% end %>
 
       <div class="actions">
