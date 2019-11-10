@@ -12,7 +12,7 @@
       </div>
       <div class="right-links">
         <% if user_signed_in? %>
-          <%= link_to "Settings", edit_user_detail_path(current_user.user_detail) %>
+          <%= link_to "Account Details", edit_user_detail_path(current_user.user_detail) %>
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to "Sign In/Up", new_user_session_path %>
