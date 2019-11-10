@@ -62,7 +62,7 @@ The following tech stack and plug-ins/services were used to achieve what is outl
 - Admin User role, has authority to take CRUD actions on Object's not owned by them. Also has access to Admin Dashboard.
 - Admin Dashboard. Can view all users here and manage their account details. Can also view site statistics.
 - Communications Manager User role, has authority to edit or delete any Comments.
-- A custom validator to ensure all Comments on a Listing cross a minimum threshold of pretentiousness.
+- A custom validator to ensure all Comments on a Listing cross a minimum threshold of pretentiousness. **ATTENTION:** This custom validator **is a joke**, it was made for the sake of learning how to do custom validators and regex (it can be found in ```/src/app/models/concerns/pretentiousness_validator.rb```). I would never implement this on a real website. To pass this validator you must use one of the following words at least once: universality, humanity, inhumanity, emotion, invokes, feelings, sense of, unrelenting, consumerist, fetishism, yearning, traditional, post-modern, zeitgeist.
 
 ### Future Developments
 
