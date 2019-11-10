@@ -49,7 +49,7 @@ The following tech stack and plug-ins/services were used to achieve what is outl
 ### Functionality and Features
 - Database to track entities such as Users, Listings, etc.
 - Create user accounts with authorization and authentication (using Devise package).
-- Any User account can both buy and sell art.
+- Any User account can both buy and sell art. (Use these seeded credentials to log in to deployed site (or create your own new account), Email: ```test1@mail.com```, Password: ```asdasd1```)
   - User can post a Listing to app for potential buyers to view or purchase.
   - User can browse art and use a search bar the look for specific artists.
   - User can purchase listed art.
@@ -60,8 +60,8 @@ The following tech stack and plug-ins/services were used to achieve what is outl
 - Functional testing suite, (using Capybara package, use the command ```rspec spec/features``` in the project folder to run tests).
 - GPS location with Google Maps API and approximate location indicator (**NOTE:** sometimes the Geocoder times out before it can get anything even with a long timeout time, in this case the map will just point to the North Pole and a Flash Error will inform the user).
 - Admin User role, has authority to take CRUD actions on Object's not owned by them. Also has access to Admin Dashboard.
-- Admin Dashboard. Can view all users here and manage their account details. Can also view site statistics.
-- Communications Manager User role, has authority to edit or delete any Comments.
+- Admin Dashboard. Can view all users here and manage their account details. Can also view site statistics. (Use these seeded credentials to log in to deployed site, Email: ```admin@mail.com```, Password: ```supercool```)
+- Communications Manager User role, has authority to edit or delete any Comments. (Use these seeded credentials to log in to deployed site, Email: ```mod@mail.com```, Password: ```kindacool```)
 - A custom validator to ensure all Comments on a Listing cross a minimum threshold of pretentiousness. **ATTENTION:** This custom validator **is a joke**, it was made for the sake of learning how to do custom validators and regex (it can be found in ```/src/app/models/concerns/pretentiousness_validator.rb```). I would never implement this on a real website. To pass this validator you must use one of the following words at least once: universality, humanity, inhumanity, emotion, invokes, feelings, sense of, unrelenting, consumerist, fetishism, yearning, traditional, post-modern, zeitgeist.
 
 ### Future Developments
