@@ -38,14 +38,13 @@ class ListingsController < ApplicationController
     postcode = address.postcode
     unnormalized_address = [line_1, line_2, city, state, postcode]
     unnormalized_address = unnormalized_address.reject { |field| !field.present? }
-                                               .join(' ')
+    .join(' ')
     begin
       @coords = Geocoder.search(unnormalized_address).first.coordinates
     rescue
       # latitude and longitude of the North Pole
       @coords = [85, -135]
-
-      # TODO pass through a notice/flash message saying address not available/real
+      flash[:map_error] = "Geocoder timed out. Either connection is slow, or Listing Owner has invalid address. Try refreshing the page to fix the first case."
     end
 
     if !current_user.nil?

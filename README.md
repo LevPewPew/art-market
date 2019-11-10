@@ -58,7 +58,7 @@ The following tech stack and plug-ins/services were used to achieve what is outl
 - reCAPTCHA security to prevent spam or automated Listings from bots.
 - Search bar (using Ransack package)
 - Functional testing suite, (using Capybara package, use the command ```rspec spec/features``` in the project folder to run tests).
-- GPS location with Google Maps API and approximate location indicator.
+- GPS location with Google Maps API and approximate location indicator (**NOTE:** sometimes the Geocoder times out before it can get anything even with a long timeout time, in this case the map will just point to the North Pole and a Flash Error will inform the user).
 - Admin User role, has authority to take CRUD actions on Object's not owned by them. Also has access to Admin Dashboard.
 - Admin Dashboard. Can view all users here and manage their account details. Can also view site statistics.
 - Communications Manager User role, has authority to edit or delete any Comments.
