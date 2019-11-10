@@ -5,7 +5,7 @@
 <%= render 'listing_info', listing: @listing %>
 
 <section class="comments-container">
-  <h3>Discussion</h3>
+  <h2>Discussion</h2>
   <%# need to ensure order by id otherwise when a comms_mngr edits, rails sends the edited to end of the array, but we want to preserve by original post order %>
   <% @listing.comments.order('id').each do |comment| %>
     <div class="comment-container">
@@ -24,7 +24,7 @@
       <% end %>
     </div>
   <% end %>
-  <h4>Discuss this Piece</h4>
+  <h3>Discuss this Piece</h3>
   <% if current_user.nil? %>
     <%= link_to "Sign In to Comment!", new_user_session_path, class: "generic-button" %>
   <% else %>

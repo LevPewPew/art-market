@@ -197,13 +197,17 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
   display: flex;
   flex-direction: column;
 
-  h3, h4 {
+  h2 {
+    margin-left: 10px;
+  }
+
+  h3 {
     margin-left: 15px;
   }
 
   .comment-container {
-    margin: 10px;
-    border-radius: 5px;
+    // margin: 10px;
+    // border-radius: 5px;
     display: flex;
     flex-direction: column;
     
@@ -234,23 +238,23 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
     }
     
     &:nth-of-type(2n + 1) {
-      background: var(--off-black);
+      background: black;
       
       .user-name {
-        color: floralwhite;
+        color: white;
       }
       
       .body {
-        color: floralwhite;
+        color: white;
       }
       
       .crud {
         a {
-          color: floralwhite;
+          color: white;
 
           &:hover {
             border: 1px solid lightcoral;
-            background: var(--off-black);
+            background: black;
           }
         
           &:link, &:visited, &:hover, &:active {
@@ -260,23 +264,23 @@ $a-tags: 'a:link, a:visited, a:hover, a:active';
       }
     }
     &:nth-of-type(2n + 2) {
-      background: floralwhite;
+      background: white;
       
       .user-name {
-        color: var(--off-black);
+        color: black;
       }
       
       .body {
-        color: var(--off-black);
+        color: black;
       }
       
       .crud {
         a {
-          color: var(--off-black);
+          color: black;
 
           &:hover {
             border: 1px solid lightcoral;
-            background: floralwhite;
+            background: white;
           }
         
           &:link, &:visited, &:hover, &:active {
