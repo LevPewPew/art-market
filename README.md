@@ -87,7 +87,69 @@ Some functionality and features for the future I would have liked to include but
 
 ### Example Screenshots
 
-<TODO add screens when app is completed>
+#### Home
+
+![Home](./docs/T2A2-ss-home.png)
+
+#### Log In
+
+![Log In](./docs/T2A2-ss-login.png)
+
+#### Account Details
+
+![Account Details](./docs/T2A2-ss-account-details.png)
+
+#### New Listing
+
+![New Listing](./docs/T2A2-ss-new-listing.png)
+
+#### Show New Listing
+
+![Show New Listing](./docs/T2A2-ss-show-new-listing.png)
+
+#### My Currently Listed
+
+![My Currently Listed](./docs/T2A2-ss-my-currently-listed.png)
+
+#### My Sold
+
+![My Sold](./docs/T2A2-ss-my-sold.png)
+
+#### Search Bar
+
+![Search Bar](./docs/T2A2-ss-search-bar.png)
+
+#### Show Listing Comments
+
+![Show Listing Comments](./docs/T2A2-ss-show-listing-comments.png)
+
+#### Show Listing Map
+
+![Show Listing Map](./docs/T2A2-ss-show-listing-map.png)
+
+#### Payment Processing
+
+![Payment Processing](./docs/T2A2-ss-payment-processing.png)
+
+#### Payment Success
+
+![Payment Success](./docs/T2A2-ss-payment-success.png)
+
+#### Show My Purchased
+
+![Show My Purchased](./docs/T2A2-ss-show-my-purchased.png)
+
+#### Admin Dashboard
+
+![Admin Dashboard](./docs/T2A2-ss-admin-dashboard.png)
+
+#### User Index
+
+![User Index](./docs/T2A2-ss-user-index.png)
+
+#### Site Stats
+
+![Site Stats](./docs/T2A2-ss-site-stats.png)
 
 ## User Stories
 
