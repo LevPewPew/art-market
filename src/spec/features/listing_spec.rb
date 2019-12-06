@@ -197,7 +197,7 @@ end
 
 def fill_user_details
   visit "/"
-  click_link "Settings"
+  click_link "Account Details"
   fill_in "Name", with: "Art Vandelay"
   fill_in "Bio", with: "I have no job and i live with my mother."
   fill_in "Line 1", with: "575 North East Road, Gilles Plains"
