@@ -77,6 +77,6 @@ gem "ransack", "~> 2.3"
 
 gem "kaminari", "~> 1.1"
 
-gem "geocoder", "~> 1.5"
+gem "geocoder", "~> 1.6"
 
 gem "recaptcha", "~> 5.2"
